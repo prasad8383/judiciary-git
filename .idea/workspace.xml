@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="eb75dbab-51b2-458e-a38b-d0b4b954630a" name="Changes" comment="Date:-20/7/2022 first project commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cdac/proj/loanapp/dao/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cdac/proj/loanapp/dao/test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cdac/proj/loanapp/service/first.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,7 +17,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
+        <option value="AnnotationType" />
       </list>
     </option>
   </component>
@@ -44,6 +47,11 @@
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.cdac.proj.loanapp.controllers" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="loan_application" type="Application" factoryName="Application">
       <module name="loan_application" />
@@ -75,7 +83,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658340850445</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Date:-20/7/2022 first project commit">
+      <created>1658390759880</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1658390759880</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
