@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb75dbab-51b2-458e-a38b-d0b4b954630a" name="Changes" comment="Date:-20/7/2022 first project commit">
+    <list default="true" id="eb75dbab-51b2-458e-a38b-d0b4b954630a" name="Changes" comment="Date:-22/7/2022">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -95,7 +95,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658495429689</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Date:-22/7/2022">
+      <created>1658496069371</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1658496069371</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -158,6 +165,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Date:-20/7/2022 first project commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Date:-20/7/2022 first project commit" />
+    <MESSAGE value="Date:-22/7/2022" />
+    <option name="LAST_COMMIT_MESSAGE" value="Date:-22/7/2022" />
   </component>
 </project>
