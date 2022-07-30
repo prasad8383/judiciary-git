@@ -8,7 +8,7 @@ import java.io.Serializable;
 @JsonIgnoreProperties(
         ignoreUnknown = true
 )
-public class UserCredentialVO implements Serializable {
+public class UserCredentialRequestVO implements Serializable {
     String userId;
     String userPassword;
     String userRole;

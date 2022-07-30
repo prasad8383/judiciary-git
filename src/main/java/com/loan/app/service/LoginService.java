@@ -1,10 +1,10 @@
 package com.loan.app.service;
 
-import com.loan.app.vo.UserCredentialVO;
-import com.loan.app.vo.UserRegistrationRequstVO;
+import com.loan.app.vo.UserCredentialRequestVO;
+import com.loan.app.vo.UserRegistrationRequestVO;
 
 public interface LoginService {
-    String checkLogin(UserCredentialVO userCredentialVO);
+    String checkLogin(UserCredentialRequestVO userCredentialVO);
 
-    String registerUser(UserRegistrationRequstVO userRegistrationRequstVO);
+    String registerUser(UserRegistrationRequestVO userRegistrationRequstVO);
 }

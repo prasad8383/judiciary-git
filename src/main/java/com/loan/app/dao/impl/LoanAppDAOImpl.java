@@ -6,24 +6,26 @@ import com.loan.app.entity.UserCredential;
 import com.loan.app.utils.HibernateUtils;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
 public class LoanAppDAOImpl extends GenericBaseDao implements LoanAppDAO {
-
+    private static Logger logger = LoggerFactory.getLogger(LoanAppDAOImpl.class);
 
     @Override
     public UserCredential checkUserExistOrNot(String userId) {
-        //todo db fetching login
-        HibernateUtils hibernateUtils = this.getHibernateUtils();
+        UserCredential userCredential = null;
+        Session session = this.getHibernateUtils().getSession();
         try{
-            return hibernateUtils.findEntityById(UserCredential.class, userId);
+            userCredential = session.find(UserCredential.class, userId);
         }catch (Exception e){
-            //todo add logger and throw exception
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
+            logger.error("LoanAppDAOImpl::checkUserExistOrNot() failed while fetching data from DB: {}", e);
+        }finally {
+            session.close();
         }
-        return null;
+        return userCredential;
     }
 
     @Override

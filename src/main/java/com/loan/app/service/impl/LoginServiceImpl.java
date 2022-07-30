@@ -5,8 +5,8 @@ import com.loan.app.dao.LoanAppDAO;
 import com.loan.app.entity.Customer;
 import com.loan.app.entity.UserCredential;
 import com.loan.app.service.LoginService;
-import com.loan.app.vo.UserCredentialVO;
-import com.loan.app.vo.UserRegistrationRequstVO;
+import com.loan.app.vo.UserCredentialRequestVO;
+import com.loan.app.vo.UserRegistrationRequestVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ObjectUtils;
 
@@ -18,7 +18,7 @@ public class LoginServiceImpl implements LoginService {
     private LoanAppDAO loanAppDAO;
 
     @Override
-    public String checkLogin(UserCredentialVO userCredentialVO) {
+    public String checkLogin(UserCredentialRequestVO userCredentialVO) {
         if(!ObjectUtils.isEmpty(userCredentialVO)) {
             UserCredential userCredential = loanAppDAO.checkUserExistOrNot(userCredentialVO.getUserId());
             if (!ObjectUtils.isEmpty(userCredential) && LoanAppConstant.USER_ROLE_ADMIN.equalsIgnoreCase(userCredential.getUserRole())){
@@ -34,23 +34,28 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    public String registerUser(UserRegistrationRequstVO userRegistrationRequstVO) {
-        //todo validation for register user fields
+    public String registerUser(UserRegistrationRequestVO userRegistrationRequstVO) {
         if(!ObjectUtils.isEmpty(userRegistrationRequstVO) && !ObjectUtils.isEmpty(userRegistrationRequstVO.getUserCredentialVO())){
-                //todo fname, mname, lname will go to customer
-                //todo userId, userPassword, roleId will goto userCredential
+            UserCredentialRequestVO userCredentialRequestVO = userRegistrationRequstVO.getUserCredentialVO();
+
             List<Object> entities = new ArrayList<>();
 
             Customer customer = new Customer();
+            customer.setFname(userRegistrationRequstVO.getFirstName());
+            customer.setContactNumber(userRegistrationRequstVO.getMobNumber());
+            customer.setLanme(userRegistrationRequstVO.getLname());
+            customer.setMname(userRegistrationRequstVO.getMname());
+
             UserCredential userCredential = new UserCredential();
-            //todo set values accordingly from request vo class
+            userCredential.setCustomer(customer);
+            userCredential.setUserId(userCredentialRequestVO.getUserId());
+            userCredential.setUserPassword(userCredentialRequestVO.getUserPassword());
+            userCredential.setUserRole(userCredentialRequestVO.getUserRole());
 
             entities.add(customer);
             entities.add(userCredential);
             loanAppDAO.saveEntities(entities);
         }
-
-
         return null;
     }
 }

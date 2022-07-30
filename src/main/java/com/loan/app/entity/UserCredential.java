@@ -17,6 +17,18 @@ public class UserCredential implements Serializable {
     @Column(name = "user_role")
     String userRole;
 
+    @OneToOne
+    @PrimaryKeyJoinColumn
+    private Customer customer;
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
     public String getUserId() {
         return userId;
     }
