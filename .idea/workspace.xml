@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb75dbab-51b2-458e-a38b-d0b4b954630a" name="Changes" comment="Date:-22/7/2022">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cdac/proj/loanapp/controllers/LoanApplicationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cdac/proj/loanapp/controllers/LoanApplicationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cdac/proj/loanapp/dao/LoanApplicationDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cdac/proj/loanapp/dao/LoanApplicationDAO.java" afterDir="false" />
-    </list>
+    <list default="true" id="eb75dbab-51b2-458e-a38b-d0b4b954630a" name="Changes" comment="Date:-30/7/2022" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,12 +49,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$APPLICATION_HOME_DIR$/apache-tomcat-8.5.81/bin/catalina.bat" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.loan.app.vo" />
@@ -117,16 +110,39 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b747918f-61a8-4bcf-bfa1-b3e9f13f44bb" name="Default Changelist" comment="" />
+      <changelist id="eb75dbab-51b2-458e-a38b-d0b4b954630a" name="Changes" comment="Date:-22/7/2022" />
       <created>1658683623327</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1658683623327</updated>
     </task>
+    <task id="LOCAL-00001" summary="Date:-30/7/2022">
+      <created>1659187780454</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1659187780454</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.jsp" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Date:-30/7/2022" />
+    <option name="LAST_COMMIT_MESSAGE" value="Date:-30/7/2022" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
