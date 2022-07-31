@@ -22,22 +22,18 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b747918f-61a8-4bcf-bfa1-b3e9f13f44bb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/config/HibernateConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/config/LoanAppDBApplicationProperties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="b747918f-61a8-4bcf-bfa1-b3e9f13f44bb" name="Default Changelist" comment="DB Configuration and entity changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/config/SpringConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/config/SpringConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/constant/LoanAppConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/constant/LoanAppConstant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/dao/impl/LoanAppDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/dao/impl/LoanAppDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/entity/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/entity/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/entity/UserCredential.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/entity/UserCredential.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/service/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/service/LoginService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/service/impl/LoginServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/service/impl/LoginServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/utils/HibernateUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/utils/HibernateUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/vo/UserCredentialVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/vo/UserCredentialRequestVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/vo/UserRegistrationRequstVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/vo/UserRegistrationRequestVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/vo/UserCredentialRequestVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/vo/UserCredentialRequestVO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/projlogo.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/images/projlogo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/welcome.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +55,7 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="C:\Software\plugins\maven\lib\maven3" />
+        <option name="mavenHome" value="C:\Users\Josh\.m2\wrapper\dists\apache-maven-3.6.3-bin\1iopthnavndlasol9gbrbg6bf2\apache-maven-3.6.3" />
       </MavenGeneralSettings>
     </option>
   </component>
@@ -75,13 +71,14 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.loan.app.vo" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Josh\IdeaProjects\loan_application\src\main\webapp" />
+      <recent name="C:\Users\Josh\IdeaProjects\loan_application\src\main\webapp\WEB-INF\images" />
       <recent name="C:\Users\Josh\IdeaProjects\loan_application\src\main\webapp\WEB-INF\views" />
       <recent name="C:\Users\Josh\IdeaProjects\loan_application\src\main\webapp\WEB-INF" />
+      <recent name="C:\Users\Josh\IdeaProjects\loan_application\src\main\webapp" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.loan.app.vo" />
     </key>
   </component>
   <component name="RunManager">
@@ -135,6 +132,14 @@
       <option name="presentableId" value="Default" />
       <updated>1658683623327</updated>
     </task>
+    <task id="LOCAL-00001" summary="DB Configuration and entity changes">
+      <created>1659202181967</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1659202181967</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -151,6 +156,10 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="DB Configuration and entity changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="DB Configuration and entity changes" />
   </component>
   <component name="WindowStateProjectService">
     <state x="275" y="1" key="#Plugins" timestamp="1658731988727">
@@ -177,46 +186,46 @@
       <screen x="0" y="0" width="1366" height="720" />
     </state>
     <state x="451" y="190" width="463" height="496" key="#com.intellij.tools.ToolEditorDialog/0.0.1366.720@0.0.1366.720" timestamp="1658731808335" />
-    <state x="438" y="62" key="#xdebugger.evaluate" timestamp="1659180566197">
+    <state x="438" y="62" key="#xdebugger.evaluate" timestamp="1659248258453">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
-    <state x="438" y="62" key="#xdebugger.evaluate/0.0.1366.720@0.0.1366.720" timestamp="1659180566197" />
+    <state x="438" y="62" key="#xdebugger.evaluate/0.0.1366.720@0.0.1366.720" timestamp="1659248258453" />
     <state x="462" y="115" key="FileChooserDialogImpl" timestamp="1659190452272">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
     <state x="462" y="115" key="FileChooserDialogImpl/0.0.1366.720@0.0.1366.720" timestamp="1659190452272" />
-    <state width="1323" height="176" key="GridCell.Tab.0.bottom" timestamp="1659189309434">
+    <state width="1323" height="210" key="GridCell.Tab.0.bottom" timestamp="1659249367979">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
-    <state width="1323" height="176" key="GridCell.Tab.0.bottom/0.0.1366.720@0.0.1366.720" timestamp="1659189309434" />
-    <state width="1323" height="176" key="GridCell.Tab.0.center" timestamp="1659189309434">
+    <state width="1323" height="210" key="GridCell.Tab.0.bottom/0.0.1366.720@0.0.1366.720" timestamp="1659249367979" />
+    <state width="1323" height="210" key="GridCell.Tab.0.center" timestamp="1659249367979">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
-    <state width="1323" height="176" key="GridCell.Tab.0.center/0.0.1366.720@0.0.1366.720" timestamp="1659189309434" />
-    <state width="1323" height="176" key="GridCell.Tab.0.left" timestamp="1659189309434">
+    <state width="1323" height="210" key="GridCell.Tab.0.center/0.0.1366.720@0.0.1366.720" timestamp="1659249367979" />
+    <state width="1323" height="210" key="GridCell.Tab.0.left" timestamp="1659249367979">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
-    <state width="1323" height="176" key="GridCell.Tab.0.left/0.0.1366.720@0.0.1366.720" timestamp="1659189309434" />
-    <state width="1323" height="176" key="GridCell.Tab.0.right" timestamp="1659189309434">
+    <state width="1323" height="210" key="GridCell.Tab.0.left/0.0.1366.720@0.0.1366.720" timestamp="1659249367979" />
+    <state width="1323" height="210" key="GridCell.Tab.0.right" timestamp="1659249367979">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
-    <state width="1323" height="176" key="GridCell.Tab.0.right/0.0.1366.720@0.0.1366.720" timestamp="1659189309434" />
-    <state width="1323" height="220" key="GridCell.Tab.1.bottom" timestamp="1659189309434">
+    <state width="1323" height="210" key="GridCell.Tab.0.right/0.0.1366.720@0.0.1366.720" timestamp="1659249367979" />
+    <state width="1323" height="210" key="GridCell.Tab.1.bottom" timestamp="1659249367820">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
-    <state width="1323" height="220" key="GridCell.Tab.1.bottom/0.0.1366.720@0.0.1366.720" timestamp="1659189309434" />
-    <state width="1323" height="220" key="GridCell.Tab.1.center" timestamp="1659189309434">
+    <state width="1323" height="210" key="GridCell.Tab.1.bottom/0.0.1366.720@0.0.1366.720" timestamp="1659249367820" />
+    <state width="1323" height="210" key="GridCell.Tab.1.center" timestamp="1659249367820">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
-    <state width="1323" height="220" key="GridCell.Tab.1.center/0.0.1366.720@0.0.1366.720" timestamp="1659189309434" />
-    <state width="1323" height="220" key="GridCell.Tab.1.left" timestamp="1659189309434">
+    <state width="1323" height="210" key="GridCell.Tab.1.center/0.0.1366.720@0.0.1366.720" timestamp="1659249367820" />
+    <state width="1323" height="210" key="GridCell.Tab.1.left" timestamp="1659249367820">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
-    <state width="1323" height="220" key="GridCell.Tab.1.left/0.0.1366.720@0.0.1366.720" timestamp="1659189309434" />
-    <state width="1323" height="220" key="GridCell.Tab.1.right" timestamp="1659189309434">
+    <state width="1323" height="210" key="GridCell.Tab.1.left/0.0.1366.720@0.0.1366.720" timestamp="1659249367820" />
+    <state width="1323" height="210" key="GridCell.Tab.1.right" timestamp="1659249367820">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
-    <state width="1323" height="220" key="GridCell.Tab.1.right/0.0.1366.720@0.0.1366.720" timestamp="1659189309434" />
+    <state width="1323" height="210" key="GridCell.Tab.1.right/0.0.1366.720@0.0.1366.720" timestamp="1659249367820" />
     <state x="213" y="15" key="Maven.ArtifactSearchDialog" timestamp="1659182492131">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
@@ -225,6 +234,10 @@
       <screen x="0" y="0" width="1366" height="720" />
     </state>
     <state x="184" y="5" key="SettingsEditor/0.0.1366.720@0.0.1366.720" timestamp="1658733298922" />
+    <state x="275" y="92" key="Vcs.Push.Dialog.v2" timestamp="1659202277993">
+      <screen x="0" y="0" width="1366" height="720" />
+    </state>
+    <state x="275" y="92" key="Vcs.Push.Dialog.v2/0.0.1366.720@0.0.1366.720" timestamp="1659202277993" />
     <state x="389" y="0" width="587" height="720" key="find.popup" timestamp="1659176165921">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
@@ -233,10 +246,10 @@
       <screen x="0" y="0" width="1366" height="720" />
     </state>
     <state x="459" y="118" key="refactoring.ChangeSignatureDialog/0.0.1366.720@0.0.1366.720" timestamp="1659186174715" />
-    <state x="346" y="41" width="672" height="678" key="search.everywhere.popup" timestamp="1659199963412">
+    <state x="346" y="41" width="672" height="678" key="search.everywhere.popup" timestamp="1659247452056">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
-    <state x="346" y="41" width="672" height="678" key="search.everywhere.popup/0.0.1366.720@0.0.1366.720" timestamp="1659199963412" />
+    <state x="346" y="41" width="672" height="678" key="search.everywhere.popup/0.0.1366.720@0.0.1366.720" timestamp="1659247452056" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

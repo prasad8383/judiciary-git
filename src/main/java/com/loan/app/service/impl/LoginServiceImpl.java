@@ -8,11 +8,12 @@ import com.loan.app.service.LoginService;
 import com.loan.app.vo.UserCredentialRequestVO;
 import com.loan.app.vo.UserRegistrationRequestVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Service
 public class LoginServiceImpl implements LoginService {
     @Autowired
     private LoanAppDAO loanAppDAO;

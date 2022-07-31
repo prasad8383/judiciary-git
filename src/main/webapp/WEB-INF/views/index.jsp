@@ -1,3 +1,4 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
 <style>
@@ -275,11 +276,11 @@
 
     <!-- Icon -->
     <div class="fadeIn first">
-      <img src="projlogo.png" id="icon" alt="User Icon" />
+      <img src="images/projlogo.png" id="icon" alt="Loan Bank" />
     </div>
 
     <!-- Login Form -->
-    <form action="/login" method="post" name="UserCredentialVO">
+    <form action="/loan_application/login" method="post" name="UserCredentialVO">
       <input type="text" id="login" class="fadeIn second" name="userId" placeholder="login">
       <input type="text" id="password" class="fadeIn third" name="userPassword" placeholder="password">
       <input type="submit" class="fadeIn fourth" value="Log In">

@@ -9,4 +9,5 @@ public interface LoanAppConstant {
     public static final String LOAN_SCHEMA = "loanprj";
     public static final String LOOK_UP_SCHEMA = "lkprj";
     public static final String CONFIG_SCHEMA = "cfgprj";
+    String SUCCESS_CODE = "SUCCESS";
 }
