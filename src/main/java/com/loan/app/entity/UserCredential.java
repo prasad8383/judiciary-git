@@ -4,20 +4,20 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "user_credential", schema = "")
+@Table(name = "user_credential", schema = "loan_application")
 public class UserCredential implements Serializable {
     @Id()
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")
     String userId;
 
-    @Column(name= "user_pass")
+    @Column(name= "user_password")
     String userPassword;
 
     @Column(name = "user_role")
     String userRole;
 
-    @OneToOne
+    /*@OneToOne
     @PrimaryKeyJoinColumn
     private Customer customer;
 
@@ -27,7 +27,7 @@ public class UserCredential implements Serializable {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
-    }
+    }*/
 
     public String getUserId() {
         return userId;

@@ -1,6 +1,5 @@
 package com.loan.app.service.impl;
 
-import com.loan.app.constant.LoanAppConstant;
 import com.loan.app.dao.LoanAppDAO;
 import com.loan.app.entity.Customer;
 import com.loan.app.entity.UserCredential;
@@ -12,26 +11,21 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 @Service
 public class LoginServiceImpl implements LoginService {
     @Autowired
-    private LoanAppDAO loanAppDAO;
+    private LoanAppDAO loanDAO;
 
     @Override
-    public String checkLogin(UserCredentialRequestVO userCredentialVO) {
-        if(!ObjectUtils.isEmpty(userCredentialVO)) {
-            UserCredential userCredential = loanAppDAO.checkUserExistOrNot(userCredentialVO.getUserId());
-            if (!ObjectUtils.isEmpty(userCredential) && LoanAppConstant.USER_ROLE_ADMIN.equalsIgnoreCase(userCredential.getUserRole())){
-                //todo bank journey page
-                return "adminPage";
-            }else if(!ObjectUtils.isEmpty(userCredential) && LoanAppConstant.USER_ROLE_CUSTOMER.equalsIgnoreCase(userCredential.getUserRole())){
-                //todo customer journey page
-                return "custPage";
-            }
-        }
-        //todo invilid credential
-        return "homepage";
+    public String checkLogin(HashMap<String, String> loginValues) {
+        UserCredentialRequestVO userCredentialRequestVO = new UserCredentialRequestVO();
+        userCredentialRequestVO.setUserId(loginValues.get("userId"));
+        userCredentialRequestVO.setUserPassword(loginValues.get("userPassword"));
+
+        UserCredential userCredential = loanDAO.checkUserExistOrNot(userCredentialRequestVO.getUserId());
+        return !ObjectUtils.isEmpty(userCredential)?userCredential.getUserRole():null;
     }
 
     @Override
@@ -48,14 +42,14 @@ public class LoginServiceImpl implements LoginService {
             customer.setMname(userRegistrationRequstVO.getMname());
 
             UserCredential userCredential = new UserCredential();
-            userCredential.setCustomer(customer);
+            //userCredential.setCustomer(customer);
             userCredential.setUserId(userCredentialRequestVO.getUserId());
             userCredential.setUserPassword(userCredentialRequestVO.getUserPassword());
             userCredential.setUserRole(userCredentialRequestVO.getUserRole());
 
             entities.add(customer);
             entities.add(userCredential);
-            loanAppDAO.saveEntities(entities);
+            loanDAO.saveEntities(entities);
         }
         return null;
     }
