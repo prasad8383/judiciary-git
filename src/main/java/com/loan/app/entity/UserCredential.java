@@ -7,7 +7,9 @@ import java.io.Serializable;
 @Table(name = "user_credential", schema = "loan_application")
 public class UserCredential implements Serializable {
     @Id()
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    int id;
+
     @Column(name = "user_id")
     String userId;
 

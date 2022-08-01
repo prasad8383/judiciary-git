@@ -4,7 +4,6 @@ import com.loan.app.constant.LoanAppConstant;
 import com.loan.app.service.LoginService;
 import com.loan.app.vo.UserRegistrationRequestVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.ObjectUtils;
@@ -40,7 +39,7 @@ public class LoginController {
             return modelAndView;
         }
         modelAndView.setViewName(viewName);
-        modelAndView.addObject("Error", "Invalid user name or password");
+        modelAndView.addObject("result", "Invalid user name or password");
         return modelAndView;
     }
 

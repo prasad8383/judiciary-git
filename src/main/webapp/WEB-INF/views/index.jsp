@@ -5,6 +5,9 @@
   html {
   background-color: #56baed;
   }
+h3 {
+  color: red;
+}
 
   body {
   font-family: "Poppins", sans-serif;
@@ -284,6 +287,7 @@
       <input type="text" id="login" class="fadeIn second" name="userId" placeholder="login">
       <input type="text" id="password" class="fadeIn third" name="userPassword" placeholder="password">
       <input type="submit" class="fadeIn fourth" value="Log In">
+      <h4>${result}</h4>
     </form>
 
     <!-- Remind Passowrd -->

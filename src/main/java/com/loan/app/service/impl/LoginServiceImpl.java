@@ -24,7 +24,7 @@ public class LoginServiceImpl implements LoginService {
         userCredentialRequestVO.setUserId(loginValues.get("userId"));
         userCredentialRequestVO.setUserPassword(loginValues.get("userPassword"));
 
-        UserCredential userCredential = loanDAO.checkUserExistOrNot(userCredentialRequestVO.getUserId());
+        UserCredential userCredential = loanDAO.checkUserExistOrNot(userCredentialRequestVO.getUserId(), userCredentialRequestVO.getUserPassword());
         return !ObjectUtils.isEmpty(userCredential)?userCredential.getUserRole():null;
     }
 

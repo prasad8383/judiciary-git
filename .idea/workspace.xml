@@ -23,19 +23,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b747918f-61a8-4bcf-bfa1-b3e9f13f44bb" name="Default Changelist" comment="DB Configuration and entity changes">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/customer.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/config/HibernateConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/config/HibernateConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/config/LoanAppDBApplicationProperties.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/config/MyWebAppInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/config/AppInitializer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/config/SpringConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/config/SpringConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/dao/LoanAppDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/dao/LoanAppDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/dao/impl/LoanAppDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/dao/impl/LoanAppDAOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/entity/UserCredential.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/entity/UserCredential.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/service/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/service/LoginService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/service/impl/LoginServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/service/impl/LoginServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/utils/HibernateUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/utils/HibernateUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,7 +148,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659249947346</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="DB Configuration and entity changes">
+      <created>1659275919428</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1659275919428</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -167,9 +174,9 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="DB Configuration and entity changes" />
     <MESSAGE value="31/07/2022:changes in Controller" />
-    <option name="LAST_COMMIT_MESSAGE" value="31/07/2022:changes in Controller" />
+    <MESSAGE value="DB Configuration and entity changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="DB Configuration and entity changes" />
   </component>
   <component name="WindowStateProjectService">
     <state x="275" y="1" key="#Plugins" timestamp="1658731988727">
@@ -180,10 +187,10 @@
       <screen x="0" y="0" width="1366" height="720" />
     </state>
     <state x="137" y="6" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.720@0.0.1366.720" timestamp="1658732952291" />
-    <state x="488" y="66" key="#com.intellij.ide.util.MemberChooser" timestamp="1659200595384">
+    <state x="488" y="66" key="#com.intellij.ide.util.MemberChooser" timestamp="1659349479573">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
-    <state x="488" y="66" key="#com.intellij.ide.util.MemberChooser/0.0.1366.720@0.0.1366.720" timestamp="1659200595384" />
+    <state x="488" y="66" key="#com.intellij.ide.util.MemberChooser/0.0.1366.720@0.0.1366.720" timestamp="1659349479573" />
     <state x="412" y="153" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1658730619416">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
@@ -196,70 +203,74 @@
       <screen x="0" y="0" width="1366" height="720" />
     </state>
     <state x="451" y="190" width="463" height="496" key="#com.intellij.tools.ToolEditorDialog/0.0.1366.720@0.0.1366.720" timestamp="1658731808335" />
-    <state x="438" y="62" width="909" height="595" key="#xdebugger.evaluate" timestamp="1659274288610">
+    <state x="438" y="62" width="909" height="595" key="#xdebugger.evaluate" timestamp="1659374364028">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
-    <state x="438" y="62" width="909" height="595" key="#xdebugger.evaluate/0.0.1366.720@0.0.1366.720" timestamp="1659274288610" />
+    <state x="438" y="62" width="909" height="595" key="#xdebugger.evaluate/0.0.1366.720@0.0.1366.720" timestamp="1659374364028" />
     <state x="462" y="115" key="FileChooserDialogImpl" timestamp="1659190452272">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
     <state x="462" y="115" key="FileChooserDialogImpl/0.0.1366.720@0.0.1366.720" timestamp="1659190452272" />
-    <state width="1323" height="210" key="GridCell.Tab.0.bottom" timestamp="1659275157468">
+    <state width="1323" height="167" key="GridCell.Tab.0.bottom" timestamp="1659376082523">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
-    <state width="1323" height="210" key="GridCell.Tab.0.bottom/0.0.1366.720@0.0.1366.720" timestamp="1659275157468" />
-    <state width="1323" height="210" key="GridCell.Tab.0.center" timestamp="1659275157468">
+    <state width="1323" height="167" key="GridCell.Tab.0.bottom/0.0.1366.720@0.0.1366.720" timestamp="1659376082523" />
+    <state width="1323" height="167" key="GridCell.Tab.0.center" timestamp="1659376082523">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
-    <state width="1323" height="210" key="GridCell.Tab.0.center/0.0.1366.720@0.0.1366.720" timestamp="1659275157468" />
-    <state width="1323" height="210" key="GridCell.Tab.0.left" timestamp="1659275157468">
+    <state width="1323" height="167" key="GridCell.Tab.0.center/0.0.1366.720@0.0.1366.720" timestamp="1659376082523" />
+    <state width="1323" height="167" key="GridCell.Tab.0.left" timestamp="1659376082523">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
-    <state width="1323" height="210" key="GridCell.Tab.0.left/0.0.1366.720@0.0.1366.720" timestamp="1659275157468" />
-    <state width="1323" height="210" key="GridCell.Tab.0.right" timestamp="1659275157468">
+    <state width="1323" height="167" key="GridCell.Tab.0.left/0.0.1366.720@0.0.1366.720" timestamp="1659376082523" />
+    <state width="1323" height="167" key="GridCell.Tab.0.right" timestamp="1659376082523">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
-    <state width="1323" height="210" key="GridCell.Tab.0.right/0.0.1366.720@0.0.1366.720" timestamp="1659275157468" />
-    <state width="1323" height="210" key="GridCell.Tab.1.bottom" timestamp="1659275157468">
+    <state width="1323" height="167" key="GridCell.Tab.0.right/0.0.1366.720@0.0.1366.720" timestamp="1659376082523" />
+    <state width="1323" height="210" key="GridCell.Tab.1.bottom" timestamp="1659376082523">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
-    <state width="1323" height="210" key="GridCell.Tab.1.bottom/0.0.1366.720@0.0.1366.720" timestamp="1659275157468" />
-    <state width="1323" height="210" key="GridCell.Tab.1.center" timestamp="1659275157468">
+    <state width="1323" height="210" key="GridCell.Tab.1.bottom/0.0.1366.720@0.0.1366.720" timestamp="1659376082523" />
+    <state width="1323" height="210" key="GridCell.Tab.1.center" timestamp="1659376082523">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
-    <state width="1323" height="210" key="GridCell.Tab.1.center/0.0.1366.720@0.0.1366.720" timestamp="1659275157468" />
-    <state width="1323" height="210" key="GridCell.Tab.1.left" timestamp="1659275157468">
+    <state width="1323" height="210" key="GridCell.Tab.1.center/0.0.1366.720@0.0.1366.720" timestamp="1659376082523" />
+    <state width="1323" height="210" key="GridCell.Tab.1.left" timestamp="1659376082523">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
-    <state width="1323" height="210" key="GridCell.Tab.1.left/0.0.1366.720@0.0.1366.720" timestamp="1659275157468" />
-    <state width="1323" height="210" key="GridCell.Tab.1.right" timestamp="1659275157468">
+    <state width="1323" height="210" key="GridCell.Tab.1.left/0.0.1366.720@0.0.1366.720" timestamp="1659376082523" />
+    <state width="1323" height="210" key="GridCell.Tab.1.right" timestamp="1659376082523">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
-    <state width="1323" height="210" key="GridCell.Tab.1.right/0.0.1366.720@0.0.1366.720" timestamp="1659275157468" />
-    <state x="213" y="15" key="Maven.ArtifactSearchDialog" timestamp="1659273764645">
+    <state width="1323" height="210" key="GridCell.Tab.1.right/0.0.1366.720@0.0.1366.720" timestamp="1659376082523" />
+    <state x="213" y="15" key="Maven.ArtifactSearchDialog" timestamp="1659371550074">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
-    <state x="213" y="15" key="Maven.ArtifactSearchDialog/0.0.1366.720@0.0.1366.720" timestamp="1659273764645" />
+    <state x="213" y="15" key="Maven.ArtifactSearchDialog/0.0.1366.720@0.0.1366.720" timestamp="1659371550074" />
+    <state x="400" y="62" key="RollbackChangesDialog" timestamp="1659375896038">
+      <screen x="0" y="0" width="1366" height="720" />
+    </state>
+    <state x="400" y="62" key="RollbackChangesDialog/0.0.1366.720@0.0.1366.720" timestamp="1659375896038" />
     <state x="184" y="5" key="SettingsEditor" timestamp="1659270050787">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
     <state x="184" y="5" key="SettingsEditor/0.0.1366.720@0.0.1366.720" timestamp="1659270050787" />
-    <state x="275" y="92" key="Vcs.Push.Dialog.v2" timestamp="1659250001696">
+    <state x="275" y="92" key="Vcs.Push.Dialog.v2" timestamp="1659275925021">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
-    <state x="275" y="92" key="Vcs.Push.Dialog.v2/0.0.1366.720@0.0.1366.720" timestamp="1659250001696" />
+    <state x="275" y="92" key="Vcs.Push.Dialog.v2/0.0.1366.720@0.0.1366.720" timestamp="1659275925021" />
     <state x="389" y="0" width="587" height="720" key="find.popup" timestamp="1659176165921">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
     <state x="389" y="0" width="587" height="720" key="find.popup/0.0.1366.720@0.0.1366.720" timestamp="1659176165921" />
-    <state x="459" y="118" key="refactoring.ChangeSignatureDialog" timestamp="1659186174715">
+    <state x="459" y="118" key="refactoring.ChangeSignatureDialog" timestamp="1659374658375">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
-    <state x="459" y="118" key="refactoring.ChangeSignatureDialog/0.0.1366.720@0.0.1366.720" timestamp="1659186174715" />
-    <state x="346" y="41" width="672" height="678" key="search.everywhere.popup" timestamp="1659272648094">
+    <state x="459" y="118" key="refactoring.ChangeSignatureDialog/0.0.1366.720@0.0.1366.720" timestamp="1659374658375" />
+    <state x="346" y="41" width="672" height="678" key="search.everywhere.popup" timestamp="1659375926635">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
-    <state x="346" y="41" width="672" height="678" key="search.everywhere.popup/0.0.1366.720@0.0.1366.720" timestamp="1659272648094" />
+    <state x="346" y="41" width="672" height="678" key="search.everywhere.popup/0.0.1366.720@0.0.1366.720" timestamp="1659375926635" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -268,6 +279,31 @@
           <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.3.13/spring-web-5.3.13-sources.jar!/org/springframework/web/method/support/InvocableHandlerMethod.java</url>
           <line>207</line>
           <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/loan/app/config/AppInitializer.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/loan/app/controller/LoginController.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/loan/app/controller/LoginController.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/loan/app/service/impl/LoginServiceImpl.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/loan/app/dao/impl/LoanAppDAOImpl.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="34" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.Query;
 import java.util.List;
 
 @Repository
@@ -18,17 +19,24 @@ public class LoanAppDAOImpl implements LoanAppDAO {
     @Autowired
     HibernateUtils hibernateUtils;
     @Override
-    public UserCredential checkUserExistOrNot(String userId) {
+    public UserCredential checkUserExistOrNot(String userId, String userPassword) {
         UserCredential userCredential = null;
-        Session session = hibernateUtils.getSession();
         try{
-            userCredential = session.find(UserCredential.class, userId);
+            userCredential = getUserCredentialByUserId(userId, userPassword);
+            //userCredential = (UserCredential) session.createCriteria(UserCredential.class).add(Restrictions.eq("userId", userId)).uniqueResult();
         }catch (Exception e){
             logger.error("LoanAppDAOImpl::checkUserExistOrNot() failed while fetching data from DB: {}", e);
-        }finally {
-            session.close();
         }
         return userCredential;
+    }
+
+    private UserCredential getUserCredentialByUserId(String userId, String userPassword) {
+        String hql = "from UserCredential uc where uc.userId = :userId and userPassword = :userPassword";
+        Session session = hibernateUtils.getSession();
+        Query query = session.createQuery(hql);
+        query.setParameter("userId", userId);
+        query.setParameter("userPassword", userPassword);
+        return (UserCredential) query.getResultList().get(0);
     }
 
     @Override
