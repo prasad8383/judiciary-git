@@ -19,7 +19,7 @@ import java.util.Map;
 
 @Controller
 public class LoginController {
-    @Autowired
+    @Autowired(required = true)
     private LoginService loginService;
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
