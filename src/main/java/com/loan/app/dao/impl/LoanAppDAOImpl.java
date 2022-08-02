@@ -1,6 +1,5 @@
 package com.loan.app.dao.impl;
 
-import com.loan.app.dao.GenericBaseDao;
 import com.loan.app.dao.LoanAppDAO;
 import com.loan.app.entity.UserCredential;
 import com.loan.app.utils.HibernateUtils;
@@ -8,29 +7,41 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+import javax.persistence.Query;
 import java.util.List;
 
-public class LoanAppDAOImpl extends GenericBaseDao implements LoanAppDAO {
+@Repository
+public class LoanAppDAOImpl implements LoanAppDAO {
     private static Logger logger = LoggerFactory.getLogger(LoanAppDAOImpl.class);
-
+    @Autowired
+    HibernateUtils hibernateUtils;
     @Override
-    public UserCredential checkUserExistOrNot(String userId) {
+    public UserCredential checkUserExistOrNot(String userId, String userPassword) {
         UserCredential userCredential = null;
-        Session session = this.getHibernateUtils().getSession();
         try{
-            userCredential = session.find(UserCredential.class, userId);
+            userCredential = getUserCredentialByUserId(userId, userPassword);
+            //userCredential = (UserCredential) session.createCriteria(UserCredential.class).add(Restrictions.eq("userId", userId)).uniqueResult();
         }catch (Exception e){
             logger.error("LoanAppDAOImpl::checkUserExistOrNot() failed while fetching data from DB: {}", e);
-        }finally {
-            session.close();
         }
         return userCredential;
     }
 
+    private UserCredential getUserCredentialByUserId(String userId, String userPassword) {
+        String hql = "from UserCredential uc where uc.userId = :userId and userPassword = :userPassword";
+        Session session = hibernateUtils.getSession();
+        Query query = session.createQuery(hql);
+        query.setParameter("userId", userId);
+        query.setParameter("userPassword", userPassword);
+        return (UserCredential) query.getResultList().get(0);
+    }
+
     @Override
     public List<Object> saveEntities(List<Object> entities) {
-        try (Session session = getHibernateUtils().getSession()) {
+        try (Session session = hibernateUtils.getSession()) {
             for (Object entity : entities) {
                 session.saveOrUpdate(entity);
             }

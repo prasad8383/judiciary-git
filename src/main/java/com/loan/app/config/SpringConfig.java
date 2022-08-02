@@ -6,10 +6,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
-import javax.swing.text.html.HTML;
-
 @Configuration
-@ComponentScan(basePackages = "com.loan.app.controller")
+@ComponentScan(basePackages = {"com.loan.app.controller","com.loan.app.service", "com.loan.app.dao", "com.loan.app.utils", "com.loan.app.config"})
 public class SpringConfig{
     @Bean
     public InternalResourceViewResolver viewResolver() {

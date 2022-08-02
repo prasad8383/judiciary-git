@@ -3,8 +3,10 @@ package com.loan.app.service;
 import com.loan.app.vo.UserCredentialRequestVO;
 import com.loan.app.vo.UserRegistrationRequestVO;
 
+import java.util.HashMap;
+
 public interface LoginService {
-    String checkLogin(UserCredentialRequestVO userCredentialVO);
+    String checkLogin(HashMap<String, String> loginValues);
 
     String registerUser(UserRegistrationRequestVO userRegistrationRequstVO);
 }
