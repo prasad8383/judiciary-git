@@ -7,6 +7,5 @@ import java.util.HashMap;
 
 public interface LoginService {
     String checkLogin(HashMap<String, String> loginValues);
-
-    String registerUser(UserRegistrationRequestVO userRegistrationRequstVO);
+    void registerUser(HashMap<String, String> userRegData);
 }

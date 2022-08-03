@@ -29,28 +29,40 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    public String registerUser(UserRegistrationRequestVO userRegistrationRequstVO) {
-        if(!ObjectUtils.isEmpty(userRegistrationRequstVO) && !ObjectUtils.isEmpty(userRegistrationRequstVO.getUserCredentialVO())){
-            UserCredentialRequestVO userCredentialRequestVO = userRegistrationRequstVO.getUserCredentialVO();
+    public void registerUser(HashMap<String, String> userRegData) {
 
+        UserRegistrationRequestVO userRegistrationRequstVO = new UserRegistrationRequestVO();
+
+        userRegistrationRequstVO.setFirstName(userRegData.get("fname"));
+        userRegistrationRequstVO.setLname(userRegData.get("lname"));
+        userRegistrationRequstVO.setMname(userRegData.get("mname"));
+        userRegistrationRequstVO.setMobNumber(userRegData.get("cnno"));
+        userRegistrationRequstVO.setEmail(userRegData.get("email"));
+
+        UserCredentialRequestVO userCredentialRequestVO = new UserCredentialRequestVO();
+        userCredentialRequestVO.setUserPassword(userRegData.get("userPassword"));
+        userCredentialRequestVO.setUserId(userRegData.get("email"));
+        userCredentialRequestVO.setUserRole("customer");
+
+        if(!ObjectUtils.isEmpty(userRegistrationRequstVO) && !ObjectUtils.isEmpty(userCredentialRequestVO)){
             List<Object> entities = new ArrayList<>();
+
+            UserCredential userCredential = new UserCredential();
+            userCredential.setUserId(userCredentialRequestVO.getUserId());
+            userCredential.setUserPassword(userCredentialRequestVO.getUserPassword());
+            userCredential.setUserRole(userCredentialRequestVO.getUserRole());
+
+            loanDAO.saveUserCredential(userCredential);
+            userCredential = loanDAO.getUserCredentialByUserId(userCredentialRequestVO.getUserId(), userCredential.getUserPassword());
 
             Customer customer = new Customer();
             customer.setFname(userRegistrationRequstVO.getFirstName());
             customer.setContactNumber(userRegistrationRequstVO.getMobNumber());
             customer.setLanme(userRegistrationRequstVO.getLname());
             customer.setMname(userRegistrationRequstVO.getMname());
-
-            UserCredential userCredential = new UserCredential();
-            //userCredential.setCustomer(customer);
-            userCredential.setUserId(userCredentialRequestVO.getUserId());
-            userCredential.setUserPassword(userCredentialRequestVO.getUserPassword());
-            userCredential.setUserRole(userCredentialRequestVO.getUserRole());
-
-            entities.add(customer);
-            entities.add(userCredential);
-            loanDAO.saveEntities(entities);
+            customer.setEmailId(userRegistrationRequstVO.getEmail());
+            customer.setUserCredentialId(userCredential.getId());
+            loanDAO.saveCustomer(customer);
         }
-        return null;
     }
 }

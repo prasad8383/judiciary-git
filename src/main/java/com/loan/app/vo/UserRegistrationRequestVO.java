@@ -1,11 +1,11 @@
 package com.loan.app.vo;
 
 public class UserRegistrationRequestVO {
-    private UserCredentialRequestVO userCredentialVO;
     private String mobNumber;
     private String firstName;
     private String lname;
     private String mname;
+    private String email;
 
     public String getLname() {
         return lname;
@@ -23,14 +23,6 @@ public class UserRegistrationRequestVO {
         this.mname = mname;
     }
 
-    public UserCredentialRequestVO getUserCredentialVO() {
-        return userCredentialVO;
-    }
-
-    public void setUserCredentialVO(UserCredentialRequestVO userCredentialVO) {
-        this.userCredentialVO = userCredentialVO;
-    }
-
     public String getMobNumber() {
         return mobNumber;
     }
@@ -45,5 +37,13 @@ public class UserRegistrationRequestVO {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

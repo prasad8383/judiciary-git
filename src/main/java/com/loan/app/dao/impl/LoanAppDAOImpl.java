@@ -1,6 +1,7 @@
 package com.loan.app.dao.impl;
 
 import com.loan.app.dao.LoanAppDAO;
+import com.loan.app.entity.Customer;
 import com.loan.app.entity.UserCredential;
 import com.loan.app.utils.HibernateUtils;
 import org.hibernate.HibernateException;
@@ -23,14 +24,13 @@ public class LoanAppDAOImpl implements LoanAppDAO {
         UserCredential userCredential = null;
         try{
             userCredential = getUserCredentialByUserId(userId, userPassword);
-            //userCredential = (UserCredential) session.createCriteria(UserCredential.class).add(Restrictions.eq("userId", userId)).uniqueResult();
         }catch (Exception e){
             logger.error("LoanAppDAOImpl::checkUserExistOrNot() failed while fetching data from DB: {}", e);
         }
         return userCredential;
     }
 
-    private UserCredential getUserCredentialByUserId(String userId, String userPassword) {
+    public UserCredential getUserCredentialByUserId(String userId, String userPassword) {
         String hql = "from UserCredential uc where uc.userId = :userId and userPassword = :userPassword";
         Session session = hibernateUtils.getSession();
         Query query = session.createQuery(hql);
@@ -44,9 +44,28 @@ public class LoanAppDAOImpl implements LoanAppDAO {
         try (Session session = hibernateUtils.getSession()) {
             for (Object entity : entities) {
                 session.saveOrUpdate(entity);
+                session.close();
             }
             return entities;
         } catch (Exception e) {
+            throw new HibernateException("Server might be down. Please try again later.");
+        }
+    }
+
+    @Override
+    public void saveUserCredential(UserCredential userCredential) {
+        try(Session session = hibernateUtils.getSession()){
+            session.saveOrUpdate(userCredential);
+        }catch (Exception e){
+            throw new HibernateException("Server might be down. Please try again later.");
+        }
+    }
+
+    @Override
+    public void saveCustomer(Customer customer) {
+        try(Session session = hibernateUtils.getSession()){
+            session.saveOrUpdate(customer);
+        }catch (Exception e){
             throw new HibernateException("Server might be down. Please try again later.");
         }
     }

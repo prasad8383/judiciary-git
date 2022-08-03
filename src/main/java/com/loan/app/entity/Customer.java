@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Table(name = "customer", schema = LoanAppConstant.LOAN_SCHEMA)
 public class Customer {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_id")
     private int customerId;
     @Column(name = "first_name")
@@ -22,6 +22,16 @@ public class Customer {
     @Column(name = "contact_no")
     private String contactNumber;
 
+    @Column(name = "id")
+    private int userCredentialId;
+
+    public int getUserCredentialId() {
+        return userCredentialId;
+    }
+
+    public void setUserCredentialId(int userCredentialId) {
+        this.userCredentialId = userCredentialId;
+    }
 
     public String getFname() {
         return fname;
@@ -49,10 +59,6 @@ public class Customer {
 
     public int getCustomerId() {
         return customerId;
-    }
-
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
     }
 
     public String getEmailId() {

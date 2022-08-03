@@ -43,9 +43,24 @@ public class LoginController {
         return modelAndView;
     }
 
-    @PostMapping(value = "/register")
-    public String checkUser(@RequestBody UserRegistrationRequestVO userRegistrationRequstVO){
-        //return loginService.registerUser(userRegistrationRequstVO);
-        return null;
+    @GetMapping(value = "/reg")
+    public ModelAndView regpage(){
+        ModelAndView modelAndView = new ModelAndView("reg");
+        return modelAndView;
     }
+
+    @PostMapping(value = "/adduser")
+    public ModelAndView registerUser(@RequestParam HashMap<String, String> userRegData){
+        ModelAndView modelAndView = new ModelAndView("index");
+        try {
+            loginService.registerUser(userRegData);
+        }catch(Exception e){
+            //todo add logger
+            modelAndView.addObject("result","something went wrong try again");
+            return modelAndView;
+        }
+        modelAndView.addObject("result","Registered successfully please login with your credentials");
+        return modelAndView;
+    }
+
 }

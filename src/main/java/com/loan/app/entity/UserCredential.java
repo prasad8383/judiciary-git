@@ -54,4 +54,8 @@ public class UserCredential implements Serializable {
     public void setUserRole(String userRole) {
         this.userRole = userRole;
     }
+
+    public int getId() {
+        return id;
+    }
 }
