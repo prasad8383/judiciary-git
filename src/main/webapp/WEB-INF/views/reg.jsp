@@ -171,12 +171,14 @@ table{
         <tr>
         	<td align='center'>Middle Name</td><td><input type='text' id='txtmname' name = "mname"><center><span id='errmsg01'></center></span></td>
        	</tr>
-        <tr>
-           	<td align='center'>Contact Number</td><td><input type='text' id='txtcnno' name = "cnno"><center><span id='errmsg02'></center></span></td>
-        </tr>
+
 		<tr>
-			<td align='center'>Last Name</td><td><input type='text' id='txtlname' name = "lname"><center><span id='errmsg2'></center></span></td>
+			<td align='center'>Last Name</td><td><input type='text' id='txtlname' name = "lname"><center><span id='errmsg02'></center></span></td>
 		</tr>
+
+		<tr>
+             <td align='center'>Contact Number</td><td><input type='text' id='txtcnno' name = "cnno"><center><span id='errmsg2'></center></span></td>
+         </tr>
 
 		<tr>
 			<td align='center'>Email</td><td><input type='text' id='txtemail' name="email"><center><span id='errmsg3'></center></span></td>

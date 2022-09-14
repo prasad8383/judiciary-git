@@ -1,30 +1,25 @@
-package com.loan.app.entity;
+package com.loan.app.vo;
 
 import com.loan.app.constant.LoanAppConstant;
+import com.loan.app.entity.BankDetails;
 
-import javax.persistence.*;
-import java.io.Serializable;
+import javax.persistence.Column;
 
+public class ApplicationRequestVO {
+    private BankDetailsRequestVO bankDetailsRequestVO;
 
-@Entity
-@Table(name = "application", schema = "LoanAppConstant.LOAN_SCHEMA")
-public class Application implements Serializable {
+    public BankDetailsRequestVO getBankDetailsRequestVO() {
+        return bankDetailsRequestVO;
+    }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "application_id")
+    public void setBankDetailsRequestVO(BankDetailsRequestVO bankDetailsRequestVO) {
+        this.bankDetailsRequestVO = bankDetailsRequestVO;
+    }
     private int applicationId;
 
-    @Column(name="customer_id")
     private int customerId;
-
-    @Column(name="prod_code")
     private final String prodCode= LoanAppConstant.PROD_CODE;
-
-    @Column(name="create_date")
     private String createDate;
-
-    @Column(name="update_date")
     private String updateDate;
 
 
@@ -35,8 +30,6 @@ public class Application implements Serializable {
     public String getCreateDate() { return createDate; }
 
     public String getUpdateDate() { return updateDate; }
-
-
 
     public void setApplicationId(int applicationId) { this.applicationId = applicationId; }
 

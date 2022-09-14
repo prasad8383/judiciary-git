@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
 
+@CrossOrigin(origins ="localhost3000")
 @Controller
 public class LoginController {
     @Autowired(required = true)
