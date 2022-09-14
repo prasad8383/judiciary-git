@@ -1,9 +1,12 @@
 package com.loan.app.service;
 
+import com.loan.app.entity.Application;
 import com.loan.app.vo.ApplicationRequestVO;
 
+import java.util.HashMap;
+
 public interface LoanApplicationService {
-    String createLoanApplication(ApplicationRequestVO createApplicationRequestVO);
+    ApplicationRequestVO createLoanApplication(HashMap applicationFormValue);
 
     ApplicationRequestVO viewLoanApplication(String applicationId);
 

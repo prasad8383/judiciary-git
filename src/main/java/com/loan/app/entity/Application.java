@@ -4,6 +4,7 @@ import com.loan.app.constant.LoanAppConstant;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 
 @Entity
@@ -15,6 +16,74 @@ public class Application implements Serializable {
     @Column(name = "application_id")
     private int applicationId;
 
+    public int getApplicationId() {
+        return applicationId;
+    }
+
+    public void setApplicationId(int applicationId) {
+        this.applicationId = applicationId;
+    }
+
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
+
+    public String getProdCode() {
+        return prodCode;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public Date getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
+    }
+
+    public int getAccountNumber() {
+        return accountNumber;
+    }
+
+    public void setAccountNumber(int accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    public String getBankName() {
+        return bankName;
+    }
+
+    public void setBankName(String bankName) {
+        this.bankName = bankName;
+    }
+
+    public int getAnnualIncome() {
+        return annualIncome;
+    }
+
+    public void setAnnualIncome(int annualIncome) {
+        this.annualIncome = annualIncome;
+    }
+
+    public String getPanNumber() {
+        return panNumber;
+    }
+
+    public void setPanNumber(String panNumber) {
+        this.panNumber = panNumber;
+    }
+
     @Column(name="customer_id")
     private int customerId;
 
@@ -22,27 +91,21 @@ public class Application implements Serializable {
     private final String prodCode= LoanAppConstant.PROD_CODE;
 
     @Column(name="create_date")
-    private String createDate;
+    private Date createDate;
 
     @Column(name="update_date")
-    private String updateDate;
+    private Date updateDate;
 
+    @Column(name = "acct_no")
+    private int accountNumber;
 
-    public int getApplicationId() { return applicationId; }
+    @Column(name = "bank_name")
+    private String bankName;
 
-    public int getCustomerId() { return customerId; }
+    @Column(name = "annual_income")
+    private int annualIncome;
 
-    public String getCreateDate() { return createDate; }
+    @Column(name = "pan_no")
+    private String panNumber;
 
-    public String getUpdateDate() { return updateDate; }
-
-
-
-    public void setApplicationId(int applicationId) { this.applicationId = applicationId; }
-
-    public void setCustomerId(int customerId) { this.customerId = customerId; }
-
-    public void setCreateDate(String createDate) { this.createDate = createDate; }
-
-    public void setUpdateDate(String updateDate) { this.updateDate = updateDate; }
 }

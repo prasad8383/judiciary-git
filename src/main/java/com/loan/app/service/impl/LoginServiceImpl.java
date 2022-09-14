@@ -1,9 +1,11 @@
 package com.loan.app.service.impl;
 
 import com.loan.app.dao.LoanAppDAO;
+import com.loan.app.entity.Application;
 import com.loan.app.entity.Customer;
 import com.loan.app.entity.UserCredential;
 import com.loan.app.service.LoginService;
+import com.loan.app.vo.ApplicationRequestVO;
 import com.loan.app.vo.UserCredentialRequestVO;
 import com.loan.app.vo.UserRegistrationRequestVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,5 +66,10 @@ public class LoginServiceImpl implements LoginService {
             customer.setUserCredentialId(userCredential.getId());
             loanDAO.saveCustomer(customer);
         }
+    }
+
+    @Override
+    public List<Application> getAllApplications() {
+        return loanDAO.getApplications();
     }
 }

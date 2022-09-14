@@ -4,17 +4,17 @@ import javax.persistence.Column;
 
 public class BankDetailsRequestVO {
 
-    private long acctNo;
+    private int acctNo;
     private int customerId;
     private String bankName;
     private int annualIncome;
     private String address;
     private int pinCode;
-    private int panNO;
+    private String panNO;
 
     public long getAcctNo() { return acctNo; }
 
-    public void setAcctNo(long acctNo) { this.acctNo = acctNo; }
+    public void setAcctNo(int acctNo) { this.acctNo = acctNo; }
 
     public int getCustomerId() { return customerId; }
 
@@ -36,7 +36,7 @@ public class BankDetailsRequestVO {
 
     public void setAddress(String address) { this.address = address; }
 
-    public int getPanNO() { return panNO; }
+    public String getPanNO() { return panNO; }
 
-    public void setPanNO(int panNO) { this.panNO = panNO; }
+    public void setPanNO(String panNO) { this.panNO = panNO; }
 }

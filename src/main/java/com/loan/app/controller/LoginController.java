@@ -1,7 +1,9 @@
 package com.loan.app.controller;
 
 import com.loan.app.constant.LoanAppConstant;
+import com.loan.app.entity.Application;
 import com.loan.app.service.LoginService;
+import com.loan.app.vo.ApplicationRequestVO;
 import com.loan.app.vo.UserRegistrationRequestVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
+import java.util.List;
 
 @CrossOrigin(origins ="localhost3000")
 @Controller
@@ -33,6 +36,8 @@ public class LoginController {
         if (!ObjectUtils.isEmpty(userRole)) {
             if (LoanAppConstant.USER_ROLE_ADMIN.equalsIgnoreCase(userRole)) {
                 viewName = "admin";
+                List<Application> applications =  loginService.getAllApplications();
+                modelAndView.addObject("application", applications);
             } else if (LoanAppConstant.USER_ROLE_CUSTOMER.equalsIgnoreCase(userRole)) {
                 viewName = "customer";
             }

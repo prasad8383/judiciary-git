@@ -1,7 +1,6 @@
 package com.loan.app.dao;
 
 import com.loan.app.entity.Application;
-import com.loan.app.entity.BankDetails;
 import com.loan.app.entity.Customer;
 import com.loan.app.entity.UserCredential;
 
@@ -17,9 +16,15 @@ public interface LoanAppDAO {
 
     Serializable saveApplication(Application application);
 
-    void saveOrUpdateBankDetails(BankDetails bankDetails);
+    /*void saveOrUpdateBankDetails(BankInfo bankDetails);
+*/
+    Application getApplicationByAppId(int applicationId);
 
-    Application getApplicationByAppId(String applicationId);
+    List<Application> getApplications();
 
-    BankDetails getBankDetailsByCustomerId(int customerId);
+
+
+    /* BankInfo getBankDetailsByCustomerId(int customerId);*/
+
+
 }

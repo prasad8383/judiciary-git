@@ -1,9 +1,8 @@
 package com.loan.app.vo;
 
 import com.loan.app.constant.LoanAppConstant;
-import com.loan.app.entity.BankDetails;
 
-import javax.persistence.Column;
+import java.util.Date;
 
 public class ApplicationRequestVO {
     private BankDetailsRequestVO bankDetailsRequestVO;
@@ -15,27 +14,89 @@ public class ApplicationRequestVO {
     public void setBankDetailsRequestVO(BankDetailsRequestVO bankDetailsRequestVO) {
         this.bankDetailsRequestVO = bankDetailsRequestVO;
     }
+
     private int applicationId;
 
     private int customerId;
-    private final String prodCode= LoanAppConstant.PROD_CODE;
-    private String createDate;
-    private String updateDate;
+    private final String prodCode = LoanAppConstant.PROD_CODE;
+    private Date createDate;
+    private Date updateDate;
+
+    private int accountNumber;
+
+    private String bankName;
+
+    private int annualIncome;
+
+    private String panNumber;
 
 
-    public int getApplicationId() { return applicationId; }
+    public int getApplicationId() {
+        return applicationId;
+    }
 
-    public int getCustomerId() { return customerId; }
+    public int getCustomerId() {
+        return customerId;
+    }
 
-    public String getCreateDate() { return createDate; }
+    public Date getCreateDate() {
+        return createDate;
+    }
 
-    public String getUpdateDate() { return updateDate; }
+    public Date getUpdateDate() {
+        return updateDate;
+    }
 
-    public void setApplicationId(int applicationId) { this.applicationId = applicationId; }
+    public void setApplicationId(int applicationId) {
+        this.applicationId = applicationId;
+    }
 
-    public void setCustomerId(int customerId) { this.customerId = customerId; }
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
 
-    public void setCreateDate(String createDate) { this.createDate = createDate; }
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
 
-    public void setUpdateDate(String updateDate) { this.updateDate = updateDate; }
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
+    }
+
+    public String getProdCode() {
+        return prodCode;
+    }
+
+    public int getAccountNumber() {
+        return accountNumber;
+    }
+
+    public void setAccountNumber(int accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    public String getBankName() {
+        return bankName;
+    }
+
+    public void setBankName(String bankName) {
+        this.bankName = bankName;
+    }
+
+    public int getAnnualIncome() {
+        return annualIncome;
+    }
+
+    public void setAnnualIncome(int annualIncome) {
+        this.annualIncome = annualIncome;
+    }
+
+    public String getPanNumber() {
+        return panNumber;
+    }
+
+    public void setPanNumber(String panNumber) {
+        this.panNumber = panNumber;
+    }
 }
+
