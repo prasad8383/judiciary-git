@@ -21,13 +21,15 @@ public class LoginServiceImpl implements LoginService {
     private LoanAppDAO loanDAO;
 
     @Override
-    public String checkLogin(HashMap<String, String> loginValues) {
+    public UserCredentialRequestVO checkLogin(HashMap<String, String> loginValues) {
         UserCredentialRequestVO userCredentialRequestVO = new UserCredentialRequestVO();
         userCredentialRequestVO.setUserId(loginValues.get("userId"));
         userCredentialRequestVO.setUserPassword(loginValues.get("userPassword"));
 
         UserCredential userCredential = loanDAO.checkUserExistOrNot(userCredentialRequestVO.getUserId(), userCredentialRequestVO.getUserPassword());
-        return !ObjectUtils.isEmpty(userCredential)?userCredential.getUserRole():null;
+        userCredentialRequestVO.setUserRole(userCredential.getUserRole());
+        userCredentialRequestVO.setId(userCredential.getId());
+        return userCredentialRequestVO;
     }
 
     @Override
@@ -71,5 +73,10 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public List<Application> getAllApplications() {
         return loanDAO.getApplications();
+    }
+
+    @Override
+    public Customer getCustomerByUserId(int userId) {
+        return loanDAO.getCustomerInfoByUserId(userId);
     }
 }

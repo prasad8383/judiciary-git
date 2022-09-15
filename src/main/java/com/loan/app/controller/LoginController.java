@@ -2,8 +2,11 @@ package com.loan.app.controller;
 
 import com.loan.app.constant.LoanAppConstant;
 import com.loan.app.entity.Application;
+import com.loan.app.entity.Customer;
+import com.loan.app.entity.UserCredential;
 import com.loan.app.service.LoginService;
 import com.loan.app.vo.ApplicationRequestVO;
+import com.loan.app.vo.UserCredentialRequestVO;
 import com.loan.app.vo.UserRegistrationRequestVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -29,17 +32,19 @@ public class LoginController {
     @RequestMapping(value = "/login", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public ModelAndView checkUser(@RequestParam HashMap<String, String> loginValues){
 
-        String userRole = loginService.checkLogin(loginValues);
+        UserCredentialRequestVO userCredential = loginService.checkLogin(loginValues);
         ModelAndView modelAndView = new ModelAndView();
         String viewName = "index";
 
-        if (!ObjectUtils.isEmpty(userRole)) {
-            if (LoanAppConstant.USER_ROLE_ADMIN.equalsIgnoreCase(userRole)) {
+        if (!ObjectUtils.isEmpty(userCredential)) {
+            if (LoanAppConstant.USER_ROLE_ADMIN.equalsIgnoreCase(userCredential.getUserRole())) {
                 viewName = "admin";
                 List<Application> applications =  loginService.getAllApplications();
                 modelAndView.addObject("application", applications);
-            } else if (LoanAppConstant.USER_ROLE_CUSTOMER.equalsIgnoreCase(userRole)) {
+            } else if (LoanAppConstant.USER_ROLE_CUSTOMER.equalsIgnoreCase(userCredential.getUserRole())) {
                 viewName = "customer";
+                Customer customer = loginService.getCustomerByUserId(userCredential.getId());
+                modelAndView.addObject("customer", customer);
             }
             modelAndView.setViewName(viewName);
             return modelAndView;

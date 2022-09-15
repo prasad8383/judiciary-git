@@ -3,6 +3,7 @@ package com.loan.app.dao.impl;
 import com.loan.app.dao.LoanAppDAO;
 import com.loan.app.entity.Application;
 import com.loan.app.entity.Customer;
+import com.loan.app.entity.LoanOffer;
 import com.loan.app.entity.UserCredential;
 import com.loan.app.utils.HibernateUtils;
 import org.hibernate.HibernateException;
@@ -101,6 +102,39 @@ public class LoanAppDAOImpl implements LoanAppDAO {
         Session session = hibernateUtils.getSession();
         Query query = session.createQuery(hql);
         return query.getResultList();
+    }
+
+    @Override
+    public void saveLoanOffer(LoanOffer loanOffer) {
+        try(Session session = hibernateUtils.getSession()){
+            session.save(loanOffer);
+        }catch (Exception e){
+            throw new HibernateException("Server might be down. Please try again later.");
+        }
+    }
+
+    @Override
+    public LoanOffer getLoanOfferByApplicationId(int applicationId) {
+        String hql = "from LoanOffer lo where lo.applicationId = :applicationId";
+        Session session = hibernateUtils.getSession();
+        Query query = session.createQuery(hql);
+        query.setParameter("applicationId", applicationId);
+        return (LoanOffer) query.getResultList().get(0);
+    }
+
+    @Override
+    public Customer getCustomerInfoByCustomerId(int customerId) {
+        Session session = hibernateUtils.getSession();
+        return session.get(Customer.class, customerId);
+    }
+
+    @Override
+    public Customer getCustomerInfoByUserId(int userCredentialId) {
+        String hql = "from Customer cust where cust.userCredentialId = :userCredentialId";
+        Session session = hibernateUtils.getSession();
+        Query query = session.createQuery(hql);
+        query.setParameter("userCredentialId", userCredentialId);
+        return (Customer) query.getResultList().get(0);
     }
 
  /*   @Override

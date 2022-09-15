@@ -10,6 +10,16 @@ public class UserCredentialRequestVO implements Serializable {
     String userPassword;
     String userRole;
 
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getUserId() {
         return userId;
     }

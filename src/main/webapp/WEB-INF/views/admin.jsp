@@ -9,8 +9,28 @@
 </script>
 <script>
 function generateOffer(appId){
-        alert("successfully requested for offers"+appId);
+         var xhttp = new XMLHttpRequest();
+           xhttp.onreadystatechange = function() {
+             if (this.readyState == 4 && this.status == 200) {
+              alert("ajax called");
+             }
+           };
+           xhttp.open("GET", "testajax?applicationId="+appId, true);
+           xhttp.send();
+           alert("Offer generated successfully");
+           document.getElementById(appId).disabled = true;
       }
+
+ function viewOffer(appId){
+          var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+              if (this.readyState == 4 && this.status == 200) {
+               alert("ajax called");
+              }
+            };
+            xhttp.open("GET", "viewOffer?applicationId="+appId, true);
+            xhttp.send();
+       }
 </script>
 <script type="text/javascript">
 	$('document').ready(function () {
@@ -170,22 +190,19 @@ table{
 
 </head>
 <body>
-<form id='reg' action='/loan_application/applications' method="post" >
+<form id='reg'>
 	<table align='center' cellspacing='5' width='50%' style='margin-top:7%'>
-	    <tr><td>Id</td><td>Customer Id</td><td>Pan Number</td><td>Generate Offer</td><td>Cibil Status</td><td>Offer Status</td></tr>
+	    <tr><td>Application Id</td><td>Customer Id</td><td>Pan Number</td><td>Generate Offer</td><td>View</td></tr>
 	    <c:forEach var = "app" items = "${application}">
         <tr>
         <td>${app.applicationId}</td>
         <td>${app.customerId}</td>
         <td>${app.panNumber}</td>
-        <td><input type = "button" value = "Generate" onclick = "generateOffer(${app.applicationId})"/></td>
-        <td>101</td>
-        <td>Offered</td>
+        <td><input type = "button" value = "Generate" onclick = "generateOffer(${app.applicationId})" id = "${app.applicationId}"/></td>
+        <td><a href="/loan_application/viewOffer?applicationId=${app.applicationId}"><input type = "button" value = "View Offers" /></a></td>
         </tr>
         </c:forEach>
 	</table>
 </form>
-
 </body>
-
 </html>

@@ -2,6 +2,7 @@ package com.loan.app.config;
 
 import com.loan.app.entity.Application;
 import com.loan.app.entity.Customer;
+import com.loan.app.entity.LoanOffer;
 import com.loan.app.entity.UserCredential;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -29,6 +30,7 @@ public class HibernateConfig {
                 configuration.addAnnotatedClass(UserCredential.class);
                 configuration.addAnnotatedClass(Customer.class);
                 configuration.addAnnotatedClass(Application.class);
+                configuration.addAnnotatedClass(LoanOffer.class);
                 configuration.setProperties(settings);
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();

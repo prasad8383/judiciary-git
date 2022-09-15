@@ -22,25 +22,28 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b747918f-61a8-4bcf-bfa1-b3e9f13f44bb" name="Default Changelist" comment="14/9/2022 : CREATE_LOAN_APPLICATION_CONTROLLER_&amp;_SERVICE">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/entity/BankInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/application.jsp" afterDir="false" />
+    <list default="true" id="b747918f-61a8-4bcf-bfa1-b3e9f13f44bb" name="Default Changelist" comment="14/9/2022 : GENERATE_OFFER">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/vo/ApplicationAndOfferVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/vo/LoanCalculations.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/vo/LoanOfferVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/offer.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/config/HibernateConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/config/HibernateConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/controller/LoanApplicationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/controller/LoanApplicationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/controller/GeneratOfferController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/controller/GeneratOfferController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/controller/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/dao/LoanAppDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/dao/LoanAppDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/dao/impl/LoanAppDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/dao/impl/LoanAppDAOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/entity/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/entity/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/entity/BankDetails.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/entity/BankInfo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/entity/LoanOffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/entity/LoanOffer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/service/LoanApplicationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/service/LoanApplicationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/service/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/service/LoginService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/service/impl/LoanApplicationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/service/impl/LoanApplicationServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/service/impl/LoginServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/service/impl/LoginServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/vo/ApplicationRequestVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/vo/ApplicationRequestVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/vo/BankDetailsRequestVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/vo/BankDetailsRequestVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/vo/BankDetailsRequestVO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/vo/UserCredentialRequestVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/vo/UserCredentialRequestVO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/create.jsp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/customer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/customer.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -84,14 +87,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "com.poratu.idea.plugins.tomcat.setting.TomcatSettingConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.poratu.idea.plugins.tomcat.setting.TomcatSettingConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.loan.app.vo" />
@@ -112,9 +115,7 @@
       <option name="adminPort" value="8005" />
       <option name="contextPath" value="/loan_application" />
       <option name="docBase" value="$PROJECT_DIR$/src/main/webapp" />
-      <option name="envOptions">
-        <map />
-      </option>
+      <option name="envOptions" />
       <option name="passParentEnvironmentVariables" value="true" />
       <option name="port" value="8090" />
       <option name="tomcatInfo">
@@ -209,7 +210,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663127848840</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="14/9/2022 : GENERATE_OFFER">
+      <created>1663181210556</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1663181210556</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -220,7 +228,24 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -232,17 +257,7 @@
     <MESSAGE value="3/8/2022 : registration Changes" />
     <MESSAGE value="12/9/2022 : changes" />
     <MESSAGE value="14/9/2022 : CREATE_LOAN_APPLICATION_CONTROLLER_&amp;_SERVICE" />
-    <option name="LAST_COMMIT_MESSAGE" value="14/9/2022 : CREATE_LOAN_APPLICATION_CONTROLLER_&amp;_SERVICE" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.3.13/spring-web-5.3.13-sources.jar!/org/springframework/web/method/support/InvocableHandlerMethod.java</url>
-          <line>207</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="14/9/2022 : GENERATE_OFFER" />
+    <option name="LAST_COMMIT_MESSAGE" value="14/9/2022 : GENERATE_OFFER" />
   </component>
 </project>

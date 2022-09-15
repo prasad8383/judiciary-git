@@ -5,17 +5,27 @@ import com.loan.app.constant.LoanAppConstant;
 import java.util.Date;
 
 public class ApplicationRequestVO {
-    private BankDetailsRequestVO bankDetailsRequestVO;
-
-    public BankDetailsRequestVO getBankDetailsRequestVO() {
-        return bankDetailsRequestVO;
-    }
-
-    public void setBankDetailsRequestVO(BankDetailsRequestVO bankDetailsRequestVO) {
-        this.bankDetailsRequestVO = bankDetailsRequestVO;
-    }
+//    private BankDetailsRequestVO bankDetailsRequestVO;
+//
+//    public BankDetailsRequestVO getBankDetailsRequestVO() {
+//        return bankDetailsRequestVO;
+//    }
+//
+//    public void setBankDetailsRequestVO(BankDetailsRequestVO bankDetailsRequestVO) {
+//        this.bankDetailsRequestVO = bankDetailsRequestVO;
+//    }
 
     private int applicationId;
+
+    public int getRequestedLoanAmt() {
+        return requestedLoanAmt;
+    }
+
+    public void setRequestedLoanAmt(int requestedLoanAmt) {
+        this.requestedLoanAmt = requestedLoanAmt;
+    }
+
+    private int requestedLoanAmt;
 
     private int customerId;
     private final String prodCode = LoanAppConstant.PROD_CODE;

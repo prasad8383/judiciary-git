@@ -2,6 +2,7 @@ package com.loan.app.dao;
 
 import com.loan.app.entity.Application;
 import com.loan.app.entity.Customer;
+import com.loan.app.entity.LoanOffer;
 import com.loan.app.entity.UserCredential;
 
 import java.io.Serializable;
@@ -21,6 +22,14 @@ public interface LoanAppDAO {
     Application getApplicationByAppId(int applicationId);
 
     List<Application> getApplications();
+
+    void saveLoanOffer(LoanOffer loanOffer);
+
+    LoanOffer getLoanOfferByApplicationId(int applicationId);
+
+    Customer getCustomerInfoByCustomerId(int customerId);
+
+    Customer getCustomerInfoByUserId(int userCredentialId);
 
 
 

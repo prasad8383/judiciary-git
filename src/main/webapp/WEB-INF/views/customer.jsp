@@ -166,8 +166,11 @@ table{
 	<table align='center' cellspacing='5' width='50%' style='margin-top:7%'>
 		<tr><td colspan="3" align='center'><b><font color='red' size="5">Loan Application & Bank Details</font></b></td></tr>
 		<tr>
-			<td align='center'>customerId</td><td><input type='text' id='txtfname' name = "customerId"><center><span id='errmsg1'></center></span></td>
+			<td align='center'>Customer id</td><td><input type='text' id='txtfname' name = "customerId" readonly="true" value="${customer.customerId}"><center><span id='errmsg1'></center></span></td>
 		</tr>
+		<tr>
+        	<td align='center'>Customer Name</td><td><input type='text' id='txtfname' name = "customerName" readonly="true" value="${customer.customerId}"><center><span id='errmsg1'></center></span></td>
+        </tr>
         <tr>
         	<td align='center'>Account Number</td><td><input type='text' id='txtmname' name = "accNo"><center><span id='errmsg01'></center></span></td>
        	</tr>
@@ -188,7 +191,10 @@ table{
 			<td align='center'>Pan No</td><td><input type='text' id='txtpass' name = "panNo"><center><span id='errmsg4'></center></td></span>
 		</tr>
          <tr>
-            <td align='center'>Income</td><td><input type='text' id='txtpass' name = "annualIncome"><center><span id='errmsg4'></center></td></span>
+            <td align='center'>Income/Year</td><td><input type='text' id='txtpass' name = "annualIncome"><center><span id='errmsg4'></center></td></span>
+         </tr>
+         <tr>
+            <td align='center'>Maximum Loan Amount</td><td><input type='text' id='txtpass' name = "requestedLoanAmt"><center><span id='errmsg4'></center></td></span>
          </tr>
 		<tr>
 			<td colspan='2' align='right'><input type="submit" id='register' class='btn' value="Create Application">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" value='Clear' class='btn'><td></td></td>

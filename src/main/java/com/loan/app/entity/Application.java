@@ -102,6 +102,17 @@ public class Application implements Serializable {
     @Column(name = "bank_name")
     private String bankName;
 
+    @Column(name = "reqested_loan_amt")
+    private int requestedLoanAmt;
+
+    public int getRequestedLoanAmt() {
+        return requestedLoanAmt;
+    }
+
+    public void setRequestedLoanAmt(int requestedLoanAmt) {
+        this.requestedLoanAmt = requestedLoanAmt;
+    }
+
     @Column(name = "annual_income")
     private int annualIncome;
 

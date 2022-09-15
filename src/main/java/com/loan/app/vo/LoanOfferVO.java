@@ -1,45 +1,26 @@
-package com.loan.app.entity;
+package com.loan.app.vo;
 
 import com.loan.app.constant.LoanAppConstant;
 
-import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 
-@Entity
-@Table(name= "loan_offer",schema = "LoanAppConstant.LOAN_SCHEMA")
-public class LoanOffer implements Serializable {
+public class LoanOfferVO {
 
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="loan_id")
     private int loanId;
+    private int interestRate;
 
-    @Column(name="application_id")
+    public int getInterestRate() {
+        return interestRate;
+    }
+
+    public void setInterestRate(int interestRate) {
+        this.interestRate = interestRate;
+    }
+
     private int applicationId;
-
-    @Column(name="loan_amount")
     private int loanAmount;
 
-    @Column(name="cal_interest_amount")
-    private int interestAmount;
-
-    @Column(name="tenure")
-    private int tenure;
-
-    @Column(name="loan_type")
-    private String loanType = LoanAppConstant.PROD_CODE;
-
-    @Column(name= "status")
     private String status;
-
-
-    @Column(name="loan_create_date")
-    private Date loanCreateDate;
-
-    @Column(name="interest_rate")
-    private int interestRate;
 
     public String getStatus() {
         return status;
@@ -49,13 +30,10 @@ public class LoanOffer implements Serializable {
         this.status = status;
     }
 
-    public int getInterestRate() {
-        return interestRate;
-    }
-
-    public void setInterestRate(int interestRate) {
-        this.interestRate = interestRate;
-    }
+    private int interestAmount;
+    private int tenure;
+    private String loanType = LoanAppConstant.PROD_CODE;
+    private Date loanCreateDate;
 
     public int getLoanId() {
         return loanId;
@@ -112,4 +90,6 @@ public class LoanOffer implements Serializable {
     public void setLoanCreateDate(Date loanCreateDate) {
         this.loanCreateDate = loanCreateDate;
     }
+
+
 }
