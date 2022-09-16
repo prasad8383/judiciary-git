@@ -31,6 +31,8 @@ public interface LoanAppDAO {
 
     Customer getCustomerInfoByUserId(int userCredentialId);
 
+    Application getApplicationByCustomerId(int customerId);
+
 
 
     /* BankInfo getBankDetailsByCustomerId(int customerId);*/

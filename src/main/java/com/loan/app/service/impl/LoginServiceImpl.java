@@ -79,4 +79,25 @@ public class LoginServiceImpl implements LoginService {
     public Customer getCustomerByUserId(int userId) {
         return loanDAO.getCustomerInfoByUserId(userId);
     }
+
+    @Override
+    public List<ApplicationRequestVO> getApplicationData() {
+        List<ApplicationRequestVO> applicationRequestVOS = new ArrayList<>();
+        List<Application> applications =  getAllApplications();
+
+        for(Application application:applications){
+            Customer customer = loanDAO.getCustomerInfoByCustomerId(application.getCustomerId());
+            ApplicationRequestVO applicationRequestVO = new ApplicationRequestVO();
+            applicationRequestVO.setGenerateOffer("");
+            if(loanDAO.getLoanOfferByApplicationId(application.getApplicationId()) != null){
+                applicationRequestVO.setGenerateOffer("disabled");
+            }
+            applicationRequestVO.setApplicationId(application.getApplicationId());
+            applicationRequestVO.setCustomerId(application.getCustomerId());
+            applicationRequestVO.setCustomerName(customer.getFname()+" "+customer.getLanme());
+            applicationRequestVO.setPanNumber(application.getPanNumber());
+            applicationRequestVOS.add(applicationRequestVO);
+        }
+        return applicationRequestVOS;
+    }
 }

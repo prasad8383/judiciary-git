@@ -169,7 +169,8 @@ table{
 			<td align='center'>Customer id</td><td><input type='text' id='txtfname' name = "customerId" readonly="true" value="${customer.customerId}"><center><span id='errmsg1'></center></span></td>
 		</tr>
 		<tr>
-        	<td align='center'>Customer Name</td><td><input type='text' id='txtfname' name = "customerName" readonly="true" value="${customer.customerId}"><center><span id='errmsg1'></center></span></td>
+        	<td align='center'>Customer Name</td><td><input type='text' id='txtfname' name = "customerfName" readonly="true" value="${customer.fname}&nbsp;&nbsp;${customer.lanme}"><center><span id='errmsg1'></center></span>
+        	</td>
         </tr>
         <tr>
         	<td align='center'>Account Number</td><td><input type='text' id='txtmname' name = "accNo"><center><span id='errmsg01'></center></span></td>

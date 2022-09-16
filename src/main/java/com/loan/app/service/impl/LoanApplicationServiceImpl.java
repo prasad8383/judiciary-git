@@ -9,11 +9,17 @@ import com.loan.app.vo.ApplicationAndOfferVO;
 import com.loan.app.vo.ApplicationRequestVO;
 import com.loan.app.vo.LoanCalculations;
 import com.loan.app.vo.LoanOfferVO;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.ModelAndView;
+import org.json.simple.parser.JSONParser;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Scanner;
 
 @Service
 public class LoanApplicationServiceImpl implements LoanApplicationService {
@@ -93,7 +99,7 @@ public class LoanApplicationServiceImpl implements LoanApplicationService {
     @Override
     public void generateOffer(int applicationId) {
         Application application = loanAppDAO.getApplicationByAppId(applicationId);
-        int score = checkCustCibilByPan(application.getPanNumber());
+        Long score = checkCustCibilByPan(application.getPanNumber());
 
         LoanOffer loanOffer = new LoanOffer();
         loanOffer.setApplicationId(applicationId);
@@ -128,15 +134,19 @@ public class LoanApplicationServiceImpl implements LoanApplicationService {
         applicationRequestVO.setCreateDate(application.getCreateDate());
 
         //set offers value
-        loanOfferVO.setLoanAmount(loanOffer.getLoanAmount());
-        loanOfferVO.setLoanType(loanOffer.getLoanType());
-        loanOfferVO.setTenure(loanOffer.getTenure());
-        loanOfferVO.setInterestAmount(loanOffer.getInterestAmount());
-        loanOfferVO.setInterestRate(loanOffer.getInterestRate());
-        loanOfferVO.setStatus(loanOffer.getStatus());
-
+        if(loanOffer != null) {
+            loanOfferVO.setLoanAmount(loanOffer.getLoanAmount());
+            loanOfferVO.setLoanType(loanOffer.getLoanType());
+            loanOfferVO.setTenure(loanOffer.getTenure());
+            loanOfferVO.setInterestAmount(loanOffer.getInterestAmount());
+            loanOfferVO.setInterestRate(loanOffer.getInterestRate());
+            loanOfferVO.setStatus(loanOffer.getStatus());
+        }
         //set customer value
         applicationAndOfferVO.setFirstName(customer.getFname());
+        applicationAndOfferVO.setEmail(customer.getEmailId());
+        applicationAndOfferVO.setMiddleName(customer.getMname());
+        applicationAndOfferVO.setCustomerId(customer.getCustomerId());
         applicationAndOfferVO.setLastName(customer.getLanme());
         applicationAndOfferVO.setMobileNumber(customer.getContactNumber());
 
@@ -145,10 +155,51 @@ public class LoanApplicationServiceImpl implements LoanApplicationService {
         return applicationAndOfferVO;
     }
 
-    private LoanCalculations calculateInterestAmount(int score, int loanAmount) {
+    @Override
+    public ModelAndView getApplicationAndOfferDetails(ApplicationAndOfferVO applicationAndOfferVO) {
+        ModelAndView modelAndView = new ModelAndView("offer");
+        if(applicationAndOfferVO != null) {
+            modelAndView.addObject("firstName", applicationAndOfferVO.getFirstName());
+            modelAndView.addObject("customerId", applicationAndOfferVO.getCustomerId());
+            modelAndView.addObject("middleName", applicationAndOfferVO.getMiddleName());
+            modelAndView.addObject("email", applicationAndOfferVO.getEmail());
+            modelAndView.addObject("lastName", applicationAndOfferVO.getLastName());
+            modelAndView.addObject("mobileNumber", applicationAndOfferVO.getMobileNumber());
+            modelAndView.addObject("btnFlag", "hidden");
+            modelAndView.addObject("btnVal", "hidden");
+        }
+        if(applicationAndOfferVO.getApplicationRequestVO() != null) {
+            ApplicationRequestVO applicationRequestVO = applicationAndOfferVO.getApplicationRequestVO();
+            modelAndView.addObject("pan", applicationRequestVO.getPanNumber());
+            modelAndView.addObject("applicationNumber", applicationRequestVO.getApplicationId());
+            modelAndView.addObject("bankName", applicationRequestVO.getBankName());
+            modelAndView.addObject("accountNumber", applicationRequestVO.getAccountNumber());
+            modelAndView.addObject("annualIncome", applicationRequestVO.getAnnualIncome());
+            modelAndView.addObject("createdDate", applicationRequestVO.getCreateDate());
+        }
+        if (applicationAndOfferVO.getLoanOfferVO() != null) {
+            LoanOfferVO loanOfferVO = applicationAndOfferVO.getLoanOfferVO();
+            modelAndView.addObject("loanType", loanOfferVO.getLoanType());
+            modelAndView.addObject("loanAmount", loanOfferVO.getLoanAmount());
+            modelAndView.addObject("interestRate", loanOfferVO.getInterestRate());
+            modelAndView.addObject("interestAmount", loanOfferVO.getInterestAmount());
+            modelAndView.addObject("tenure", loanOfferVO.getTenure());
+            modelAndView.addObject("totalLoanAmount", (loanOfferVO.getInterestAmount() + loanOfferVO.getLoanAmount()));
+            modelAndView.addObject("offerStatus", loanOfferVO.getStatus());
+            modelAndView.addObject("loanCreatedDate", loanOfferVO.getLoanCreateDate());
+        }
+        return modelAndView;
+    }
+
+    @Override
+    public Application getApplicationByCustomerId(int customerId) {
+        return loanAppDAO.getApplicationByCustomerId(customerId);
+    }
+
+    private LoanCalculations calculateInterestAmount(Long score, int loanAmount) {
         LoanCalculations loanCalculations = new LoanCalculations();
 
-        if(score < 650){
+        if(score < 700){
             loanAmount = loanAmount * 80/100;
             loanCalculations.setIntersetRate(15);
         }else{
@@ -161,8 +212,31 @@ public class LoanApplicationServiceImpl implements LoanApplicationService {
         return loanCalculations;
     }
 
-    private int checkCustCibilByPan(String panNumber) {
+    private Long checkCustCibilByPan(String panNumber) {
+        try{
+            URL url = new URL("http://localhost:3000/cibildetails_"+panNumber);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.connect();
+            int responsecode = conn.getResponseCode();
 
-        return 700;
+            if (responsecode != 200) {
+                throw new RuntimeException("HttpResponseCode: " + responsecode);
+            } else {
+
+                String inline = "";
+                Scanner scanner = new Scanner(url.openStream());
+                while (scanner.hasNext()) {
+                    inline += scanner.nextLine();
+                }
+
+                scanner.close();
+                JSONParser parse = new JSONParser();
+                JSONObject data_obj = (JSONObject) parse.parse(inline);
+                return (Long)data_obj.get("score");
+            }
+        }catch (Exception e){
+            return 400L;
+        }
     }
 }

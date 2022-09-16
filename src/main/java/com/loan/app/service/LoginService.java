@@ -17,4 +17,6 @@ public interface LoginService {
     List<Application> getAllApplications();
 
     Customer getCustomerByUserId(int userId);
+
+    List<ApplicationRequestVO> getApplicationData();
 }

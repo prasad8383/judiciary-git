@@ -4,8 +4,36 @@ public class ApplicationAndOfferVO {
     private ApplicationRequestVO applicationRequestVO;
     private LoanOfferVO loanOfferVO;
     private String firstName;
+    private String middleName;
     private String lastName;
     private String mobileNumber;
+    private String email;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    private int customerId;
+
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
 
     public ApplicationRequestVO getApplicationRequestVO() {
         return applicationRequestVO;

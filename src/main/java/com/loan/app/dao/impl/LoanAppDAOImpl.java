@@ -81,15 +81,6 @@ public class LoanAppDAOImpl implements LoanAppDAO {
         }
     }
 
-    /*@Override
-    public void saveOrUpdateBankDetails(BankInfo bankDetails) {
-        try(Session session = hibernateUtils.getSession()){
-           session.persist(bankDetails);
-        }catch (Exception e){
-            throw new HibernateException("Server might be down. Please try again later.");
-        }
-    }*/
-
     @Override
     public Application getApplicationByAppId(int applicationId) {
         Session session = hibernateUtils.getSession();
@@ -119,7 +110,7 @@ public class LoanAppDAOImpl implements LoanAppDAO {
         Session session = hibernateUtils.getSession();
         Query query = session.createQuery(hql);
         query.setParameter("applicationId", applicationId);
-        return (LoanOffer) query.getResultList().get(0);
+        return (LoanOffer) (!query.getResultList().isEmpty() ?query.getResultList().get(0):null);
     }
 
     @Override
@@ -137,12 +128,13 @@ public class LoanAppDAOImpl implements LoanAppDAO {
         return (Customer) query.getResultList().get(0);
     }
 
- /*   @Override
-    public BankInfo getBankDetailsByCustomerId(int customerId) {
-        String hql = "from BankDetails bnk where bnk.customerId = :customerId";
+    @Override
+    public Application getApplicationByCustomerId(int customerId) {
+        String hql = "from Application app where app.customerId = :customerId";
         Session session = hibernateUtils.getSession();
         Query query = session.createQuery(hql);
         query.setParameter("customerId", customerId);
-        return (BankInfo) query.getResultList().get(0);
-    }*/
+        return (Application)(!query.getResultList().isEmpty() ?query.getResultList().get(0):null);
+    }
+
 }

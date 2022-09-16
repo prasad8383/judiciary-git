@@ -1,7 +1,10 @@
 package com.loan.app.controller;
 
 import com.loan.app.entity.Application;
+import com.loan.app.entity.Customer;
 import com.loan.app.service.LoanApplicationService;
+import com.loan.app.service.LoginService;
+import com.loan.app.vo.ApplicationAndOfferVO;
 import com.loan.app.vo.ApplicationRequestVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,22 +21,23 @@ public class LoanApplicationController {
 
     @Autowired
     private LoanApplicationService loanApplicationService;
-    @GetMapping("/test")
-    public String index() {
-        return "Greetings from Spring Boot!";
+
+    @Autowired
+    private LoginService loginService;
+    @GetMapping("/appPage")
+    public ModelAndView index(@RequestParam int userId) {
+        Customer customer = loginService.getCustomerByUserId(userId);
+        ModelAndView modelAndView = new ModelAndView("customer");
+        modelAndView.addObject("customer", customer);
+        return modelAndView;
     }
 
     @PostMapping(value = "/create")
     public ModelAndView createLoanApplication(@RequestParam HashMap applicationFormValue){
        try {
            ApplicationRequestVO applicationRes =  loanApplicationService.createLoanApplication(applicationFormValue);
-           ModelAndView applicationView = new ModelAndView("application");
-           applicationView.addObject("applicationId", applicationRes.getApplicationId());
-           applicationView.addObject("annualIncome", applicationRes.getAnnualIncome());
-           applicationView.addObject("panNumber", applicationRes.getPanNumber());
-           applicationView.addObject("customerId", applicationRes.getCustomerId());
-           applicationView.addObject("createDate", applicationRes.getCreateDate());
-           return applicationView;
+           ApplicationAndOfferVO applicationAndOfferVO = loanApplicationService.getApplicationAndOfferData(applicationRes.getApplicationId());
+           return loanApplicationService.getApplicationAndOfferDetails(applicationAndOfferVO);
        }catch(Exception e){
            throw e;
        }

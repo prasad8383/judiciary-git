@@ -24,27 +24,8 @@ public class GeneratOfferController {
     @GetMapping("/viewOffer")
     public ModelAndView viewOffer(@RequestParam int applicationId){
         ApplicationAndOfferVO applicationAndOfferVO = loanApplicationService.getApplicationAndOfferData(applicationId);
-        ApplicationRequestVO applicationRequestVO = applicationAndOfferVO.getApplicationRequestVO();
-        LoanOfferVO loanOfferVO = applicationAndOfferVO.getLoanOfferVO();
-
-        ModelAndView modelAndView = new ModelAndView("offer");
-        modelAndView.addObject("firstName",applicationAndOfferVO.getFirstName() );
-        modelAndView.addObject("lastName", applicationAndOfferVO.getLastName());
-        modelAndView.addObject("pan", applicationRequestVO.getPanNumber());
-        modelAndView.addObject("mobileNumber",applicationAndOfferVO.getMobileNumber());
-        modelAndView.addObject("applicationNumber",applicationRequestVO.getApplicationId() );
-        modelAndView.addObject("bankName", applicationRequestVO.getBankName());
-        modelAndView.addObject("accountNumber", applicationRequestVO.getAccountNumber() );
-        modelAndView.addObject("annualIncome", applicationRequestVO.getAnnualIncome());
-        modelAndView.addObject("createdDate", applicationRequestVO.getCreateDate() );
-        modelAndView.addObject("loanType", loanOfferVO.getLoanType());
-        modelAndView.addObject("loanAmount", loanOfferVO.getLoanAmount());
-        modelAndView.addObject("interestRate", loanOfferVO.getInterestRate());
-        modelAndView.addObject("interestAmount", loanOfferVO.getInterestAmount());
-        modelAndView.addObject("tenure", loanOfferVO.getTenure());
-        modelAndView.addObject("totalLoanAmount", (loanOfferVO.getInterestAmount() + loanOfferVO.getLoanAmount()));
-        modelAndView.addObject("offerStatus", loanOfferVO.getStatus());
-        modelAndView.addObject("loanCreatedDate", loanOfferVO.getLoanCreateDate());
+        ModelAndView modelAndView = loanApplicationService.getApplicationAndOfferDetails(applicationAndOfferVO);
+        modelAndView.addObject("btnVal", "");
         return modelAndView;
     }
 }

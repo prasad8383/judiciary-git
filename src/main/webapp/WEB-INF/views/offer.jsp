@@ -98,6 +98,7 @@
     </style>
   </head>
   <body>
+  <div align = "right"><a href="/loan_application/home"><button>Logout</button></a></div>
     <div class="testbox">
       <form action="/">
         <h1>Application Overview</h1>
@@ -106,16 +107,20 @@
         <table>
           <tr>
             <th class="first-col"></th>
+            <th>Customer Ref No</th>
             <th>First Name</th>
+            <th>Middle Name</th>
             <th>Last Name</th>
-            <th>Pan Number</th>
+            <th>Email</th>
             <th>Mobile Number</th>
           </tr>
           <tr>
             <td class="first-col"></td>
+            <td>${customerId}</td>
             <td>${firstName}</td>
+            <td>${middleName}</td>
             <td>${lastName}</td>
-            <td>${pan}</td>
+            <td>${email}</td>
             <td>${mobileNumber}</td>
           </tr>
         </table>
@@ -124,22 +129,22 @@
           <tr>
             <th class="first-col"></th>
             <th>Application Id</th>
+            <th>Pan Number</th>
             <th>Bank Name</th>
             <th>Account Number</th>
             <th>Annual Income</th>
             <th>Created Date</th>
-
           </tr>
           <tr>
             <td class="first-col"></td>
             <td>${applicationNumber}</td>
+            <td>${pan}</td>
             <td>${bankName}</td>
             <td>${accountNumber}</td>
             <td>${annualIncome}</td>
            <td>${createdDate}</td>
           </tr>
         </table>
-
 
 <h3>Loan Details</h3>
         <table>
@@ -164,7 +169,8 @@
            <td>${offerStatus}</td>
           </tr>
         </table>
-          <button type="submit" href="/">Back</button>
+          <div align = "center"><a href="/loan_application/appPage?userId=${customer.userCredentialId}"><input type = "button" value = "Create Application" ${btnFlag}/></a></div>
+          <div align = "left"><a href="/loan_application/back"><input type="button" value = "Back" ${btnVal}/></a></div>
         </div>
       </form>
     </div>

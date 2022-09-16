@@ -192,14 +192,15 @@ table{
 <body>
 <form id='reg'>
 	<table align='center' cellspacing='5' width='50%' style='margin-top:7%'>
-	    <tr><td>Application Id</td><td>Customer Id</td><td>Pan Number</td><td>Generate Offer</td><td>View</td></tr>
+	    <tr><td>Application Id</td><td>Customer Id</td><td>Customer Name</td><td>Pan Number</td><td>Generate Offer</td><td>View</td></tr>
 	    <c:forEach var = "app" items = "${application}">
         <tr>
         <td>${app.applicationId}</td>
         <td>${app.customerId}</td>
+        <td>${app.customerName}</td>
         <td>${app.panNumber}</td>
-        <td><input type = "button" value = "Generate" onclick = "generateOffer(${app.applicationId})" id = "${app.applicationId}"/></td>
-        <td><a href="/loan_application/viewOffer?applicationId=${app.applicationId}"><input type = "button" value = "View Offers" /></a></td>
+        <td><input type = "button" value = "Generate" onclick = "generateOffer(${app.applicationId})" id = "${app.applicationId}" ${app.generateOffer}/></td>
+        <td><a href="/loan_application/viewOffer?applicationId=${app.applicationId}"><input type = "button" value = "View Offers"/></a></td>
         </tr>
         </c:forEach>
 	</table>
