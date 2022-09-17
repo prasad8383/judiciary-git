@@ -22,22 +22,18 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b747918f-61a8-4bcf-bfa1-b3e9f13f44bb" name="Default Changelist" comment="15/9/2022 : OFFER_GENERATED">
+    <list default="true" id="b747918f-61a8-4bcf-bfa1-b3e9f13f44bb" name="Default Changelist" comment="16/9/2022 : ALL_WORKING">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/createloanapplication.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/controller/GeneratOfferController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/controller/GeneratOfferController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/controller/LoanApplicationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/controller/LoanApplicationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/dao/LoanAppDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/dao/LoanAppDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/dao/impl/LoanAppDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/dao/impl/LoanAppDAOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/service/LoanApplicationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/service/LoanApplicationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/service/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/service/LoginService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/service/impl/LoanApplicationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/service/impl/LoanApplicationServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/service/impl/LoginServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/service/impl/LoginServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/vo/ApplicationAndOfferVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/vo/ApplicationAndOfferVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/vo/ApplicationRequestVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/vo/ApplicationRequestVO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/customer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/customer.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/customer.jsp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/offer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/offer.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -81,14 +77,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.loan.app.vo" />
@@ -218,7 +214,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663266716405</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="16/9/2022 : ALL_WORKING">
+      <created>1663348662749</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1663348662749</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -260,6 +263,7 @@
     <MESSAGE value="14/9/2022 : CREATE_LOAN_APPLICATION_CONTROLLER_&amp;_SERVICE" />
     <MESSAGE value="14/9/2022 : GENERATE_OFFER" />
     <MESSAGE value="15/9/2022 : OFFER_GENERATED" />
-    <option name="LAST_COMMIT_MESSAGE" value="15/9/2022 : OFFER_GENERATED" />
+    <MESSAGE value="16/9/2022 : ALL_WORKING" />
+    <option name="LAST_COMMIT_MESSAGE" value="16/9/2022 : ALL_WORKING" />
   </component>
 </project>

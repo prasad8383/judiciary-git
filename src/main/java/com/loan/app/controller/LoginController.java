@@ -5,7 +5,8 @@ import com.loan.app.entity.Application;
 import com.loan.app.entity.Customer;
 import com.loan.app.service.LoanApplicationService;
 import com.loan.app.service.LoginService;
-import com.loan.app.vo.*;
+import com.loan.app.vo.ApplicationAndOfferVO;
+import com.loan.app.vo.UserCredentialRequestVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
-import java.util.List;
 
 @Controller
 public class LoginController {
@@ -31,42 +31,8 @@ public class LoginController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public ModelAndView checkUser(@RequestParam HashMap<String, String> loginValues){
-
         UserCredentialRequestVO userCredential = loginService.checkLogin(loginValues);
-        ModelAndView modelAndView = new ModelAndView();
-        String viewName = "index";
-
-        if (!ObjectUtils.isEmpty(userCredential)) {
-            if (LoanAppConstant.USER_ROLE_ADMIN.equalsIgnoreCase(userCredential.getUserRole())) {
-                viewName = "admin";
-                List<ApplicationRequestVO> applications = loginService.getApplicationData();
-                modelAndView.addObject("application", applications);
-            } else if (LoanAppConstant.USER_ROLE_CUSTOMER.equalsIgnoreCase(userCredential.getUserRole())) {
-                Customer customer = loginService.getCustomerByUserId(userCredential.getId());
-                Application application = loanApplicationService.getApplicationByCustomerId(customer.getCustomerId());
-                if(application != null) {
-                    ApplicationAndOfferVO applicationAndOfferVO = loanApplicationService.getApplicationAndOfferData(application.getApplicationId());
-                    modelAndView = loanApplicationService.getApplicationAndOfferDetails(applicationAndOfferVO);
-                }else {
-                    ApplicationAndOfferVO applicationAndOfferVO = new ApplicationAndOfferVO();
-                    applicationAndOfferVO.setFirstName(customer.getFname());
-                    applicationAndOfferVO.setLastName(customer.getLanme());
-                    applicationAndOfferVO.setMobileNumber(customer.getContactNumber());
-                    modelAndView = loanApplicationService.getApplicationAndOfferDetails(applicationAndOfferVO);
-                    modelAndView.addObject("btnFlag", "");
-                    modelAndView.addObject("btnVal", "hidden");
-                }
-                modelAndView.addObject("customer", customer);
-                return modelAndView;
-            }
-            modelAndView.addObject("btnFlag", "hidden");
-            modelAndView.addObject("btnVal", "");
-            modelAndView.setViewName(viewName);
-            return modelAndView;
-        }
-        modelAndView.setViewName(viewName);
-        modelAndView.addObject("result", "Invalid user name or password");
-        return modelAndView;
+        return viewAccordingToUserRole(userCredential);
     }
 
     @GetMapping(value = "/reg")
@@ -76,7 +42,7 @@ public class LoginController {
     }
 
     @PostMapping(value = "/adduser")
-    public ModelAndView registerUser(@RequestParam HashMap<String, String> userRegData){
+    public ModelAndView addUser(@RequestParam HashMap<String, String> userRegData){
         ModelAndView modelAndView = new ModelAndView("index");
         try {
             loginService.registerUser(userRegData);
@@ -88,11 +54,30 @@ public class LoginController {
         modelAndView.addObject("result","Registered successfully please login with your credentials");
         return modelAndView;
     }
-    @GetMapping(value = "/back")
-    public ModelAndView adminPage() {
-        ModelAndView modelAndView = new ModelAndView("admin");
-        List<ApplicationRequestVO> applications = loginService.getApplicationData();
-        modelAndView.addObject("application", applications);
+
+    private ModelAndView viewAccordingToUserRole(UserCredentialRequestVO userCredential) {
+        ModelAndView modelAndView = new ModelAndView();
+        String viewName = "index";
+
+        if (!ObjectUtils.isEmpty(userCredential)) {
+            if (LoanAppConstant.USER_ROLE_ADMIN.equalsIgnoreCase(userCredential.getUserRole())) {
+                return loanApplicationService.getAllApplications();
+            } else if (LoanAppConstant.USER_ROLE_CUSTOMER.equalsIgnoreCase(userCredential.getUserRole())) {
+                Customer customer = loginService.getCustomerByUserId(userCredential.getId());
+                Application application = loanApplicationService.getApplicationByCustomerId(customer.getCustomerId());
+                if(application != null) {
+                    ApplicationAndOfferVO applicationAndOfferVO = loanApplicationService.getApplicationAndOfferData(application.getApplicationId());
+                    modelAndView = loanApplicationService.getApplicationAndOfferDetails(applicationAndOfferVO);
+                }else {
+                    //if no application is created then fetch customer data only
+                    modelAndView = loanApplicationService.getCustomerInfo(customer);
+                }
+                modelAndView.addObject("customer", customer);
+                return modelAndView;
+            }
+        }
+        modelAndView.setViewName(viewName);
+        modelAndView.addObject("result", "Invalid user name or password");
         return modelAndView;
     }
 }

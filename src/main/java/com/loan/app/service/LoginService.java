@@ -14,9 +14,6 @@ public interface LoginService {
     UserCredentialRequestVO checkLogin(HashMap<String, String> loginValues);
     void registerUser(HashMap<String, String> userRegData);
 
-    List<Application> getAllApplications();
-
     Customer getCustomerByUserId(int userId);
 
-    List<ApplicationRequestVO> getApplicationData();
 }

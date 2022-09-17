@@ -4,7 +4,25 @@
     <title>Application Overview</title>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <script>
+    function myFunction() {
+      alert("Successfully Requested for offer");
+    }
+    </script>
     <style>
+    #btn{
+                width: 150px;
+                padding: 10px;
+                border: none;
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+                background-color: #095484;
+                font-size: 16px;
+                color: #fff;
+                cursor: pointer;
+
+          }
       html, body {
       min-height: 100%;
       }
@@ -99,6 +117,9 @@
   </head>
   <body>
   <div align = "right"><a href="/loan_application/home"><button>Logout</button></a></div>
+  <div><marquee width="60%" direction="left" height="50px">
+         <b>CDAC LOAN BANK</b> (Taking Banking Technology to Common Man, Your Tech-friendly bank)   <font color = "red">*For more information call on us: 9604889377</font>
+         </marquee></div>
     <div class="testbox">
       <form action="/">
         <h1>Application Overview</h1>
@@ -128,7 +149,7 @@
         <table>
           <tr>
             <th class="first-col"></th>
-            <th>Application Id</th>
+            <th>Loan Appl Id</th>
             <th>Pan Number</th>
             <th>Bank Name</th>
             <th>Account Number</th>
@@ -169,8 +190,9 @@
            <td>${offerStatus}</td>
           </tr>
         </table>
-          <div align = "center"><a href="/loan_application/appPage?userId=${customer.userCredentialId}"><input type = "button" value = "Create Application" ${btnFlag}/></a></div>
-          <div align = "left"><a href="/loan_application/back"><input type="button" value = "Back" ${btnVal}/></a></div>
+          <div align = "right"><a href="/loan_application/loanapplicationpage?userId=${customer.userCredentialId}"><input type = "button" value = "Create Application" ${btnFlag} id = "btn"/></a></div>
+          <div align = "left"><a href="/loan_application/back"><input type="button" id = "btn" value = "Back" ${btnVal}/></a></div>
+          <div align ="right"><input type = "button" value = "Generate Offer" id = "btn" onclick ="myFunction()" ${btnG}/></div>
         </div>
       </form>
     </div>
