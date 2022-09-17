@@ -22,18 +22,16 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b747918f-61a8-4bcf-bfa1-b3e9f13f44bb" name="Default Changelist" comment="16/9/2022 : ALL_WORKING">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/createloanapplication.jsp" afterDir="false" />
+    <list default="true" id="b747918f-61a8-4bcf-bfa1-b3e9f13f44bb" name="Default Changelist" comment="17/9/2022 : CHANGES">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/controller/GeneratOfferController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/controller/GeneratOfferController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/controller/LoanApplicationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/controller/LoanApplicationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/service/LoanApplicationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/service/LoanApplicationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/service/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/service/LoginService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/constant/LoanAppConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/constant/LoanAppConstant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/dao/LoanAppDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/dao/LoanAppDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/dao/impl/LoanAppDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/dao/impl/LoanAppDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/entity/LoanOffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/entity/LoanOffer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/service/impl/LoanApplicationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/service/impl/LoanApplicationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/service/impl/LoginServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/service/impl/LoginServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/customer.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/vo/ApplicationAndOfferVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/vo/ApplicationAndOfferVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/vo/LoanCalculations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/vo/LoanCalculations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/loan/app/vo/LoanOfferVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/loan/app/vo/LoanOfferVO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/offer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/offer.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -221,7 +219,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663348662749</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="17/9/2022 : CHANGES">
+      <created>1663400611007</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1663400611007</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -264,6 +269,7 @@
     <MESSAGE value="14/9/2022 : GENERATE_OFFER" />
     <MESSAGE value="15/9/2022 : OFFER_GENERATED" />
     <MESSAGE value="16/9/2022 : ALL_WORKING" />
-    <option name="LAST_COMMIT_MESSAGE" value="16/9/2022 : ALL_WORKING" />
+    <MESSAGE value="17/9/2022 : CHANGES" />
+    <option name="LAST_COMMIT_MESSAGE" value="17/9/2022 : CHANGES" />
   </component>
 </project>

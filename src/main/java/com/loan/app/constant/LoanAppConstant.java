@@ -14,4 +14,6 @@ public interface LoanAppConstant {
     public static final String CONFIG_SCHEMA = "cfgprj";
 
     String SUCCESS_CODE = "SUCCESS";
+    String RELIANCE_PROVIDER = "RELIANCE";
+    String BAJAJ_PROVIDER = "BAJAJ";
 }

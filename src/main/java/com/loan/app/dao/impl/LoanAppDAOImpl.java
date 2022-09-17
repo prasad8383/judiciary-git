@@ -105,12 +105,12 @@ public class LoanAppDAOImpl implements LoanAppDAO {
     }
 
     @Override
-    public LoanOffer getLoanOfferByApplicationId(int applicationId) {
+    public List<LoanOffer> getLoanOfferByApplicationId(int applicationId) {
         String hql = "from LoanOffer lo where lo.applicationId = :applicationId";
         Session session = hibernateUtils.getSession();
         Query query = session.createQuery(hql);
         query.setParameter("applicationId", applicationId);
-        return (LoanOffer) (!query.getResultList().isEmpty() ?query.getResultList().get(0):null);
+        return (List<LoanOffer>) (!query.getResultList().isEmpty() ?query.getResultList():null);
     }
 
     @Override

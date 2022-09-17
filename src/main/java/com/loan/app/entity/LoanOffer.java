@@ -19,6 +19,9 @@ public class LoanOffer implements Serializable {
     @Column(name="application_id")
     private int applicationId;
 
+    @Column(name="provider")
+    private String provider;
+
     @Column(name="loan_amount")
     private int loanAmount;
 
@@ -95,6 +98,14 @@ public class LoanOffer implements Serializable {
 
     public void setTenure(int tenure) {
         this.tenure = tenure;
+    }
+
+    public String getProvider() {
+        return provider;
+    }
+
+    public void setProvider(String provider) {
+        this.provider = provider;
     }
 
     public String getLoanType() {

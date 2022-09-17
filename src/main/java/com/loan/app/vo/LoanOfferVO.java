@@ -9,6 +9,16 @@ public class LoanOfferVO {
     private int loanId;
     private int interestRate;
 
+    private String provider;
+
+    public String getProvider() {
+        return provider;
+    }
+
+    public void setProvider(String provider) {
+        this.provider = provider;
+    }
+
     public int getInterestRate() {
         return interestRate;
     }

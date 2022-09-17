@@ -1,8 +1,10 @@
 package com.loan.app.vo;
 
+import java.util.List;
+
 public class ApplicationAndOfferVO {
     private ApplicationRequestVO applicationRequestVO;
-    private LoanOfferVO loanOfferVO;
+    private List<LoanOfferVO> loanOfferVOS;
     private String firstName;
     private String middleName;
     private String lastName;
@@ -43,12 +45,12 @@ public class ApplicationAndOfferVO {
         this.applicationRequestVO = applicationRequestVO;
     }
 
-    public LoanOfferVO getLoanOfferVO() {
-        return loanOfferVO;
+    public List<LoanOfferVO> getLoanOfferVOS() {
+        return loanOfferVOS;
     }
 
-    public void setLoanOfferVO(LoanOfferVO loanOfferVO) {
-        this.loanOfferVO = loanOfferVO;
+    public void setLoanOfferVOS(List<LoanOfferVO> loanOfferVOS) {
+        this.loanOfferVOS = loanOfferVOS;
     }
 
     public String getFirstName() {

@@ -127,7 +127,6 @@
         <h3>Personal Details</h3>
         <table>
           <tr>
-            <th class="first-col"></th>
             <th>Customer Ref No</th>
             <th>First Name</th>
             <th>Middle Name</th>
@@ -136,20 +135,18 @@
             <th>Mobile Number</th>
           </tr>
           <tr>
-            <td class="first-col"></td>
-            <td>${customerId}</td>
-            <td>${firstName}</td>
-            <td>${middleName}</td>
-            <td>${lastName}</td>
-            <td>${email}</td>
-            <td>${mobileNumber}</td>
+            <td>${customerobj.customerId}</td>
+            <td>${customerobj.firstName}</td>
+            <td>${customerobj.middleName}</td>
+            <td>${customerobj.lastName}</td>
+            <td>${customerobj.email}</td>
+            <td>${customerobj.mobileNumber}</td>
           </tr>
         </table>
 <h3>Appliction Details</h3>
         <table>
           <tr>
-            <th class="first-col"></th>
-            <th>Loan Appl Id</th>
+            <th>Application Id</th>
             <th>Pan Number</th>
             <th>Bank Name</th>
             <th>Account Number</th>
@@ -157,38 +154,39 @@
             <th>Created Date</th>
           </tr>
           <tr>
-            <td class="first-col"></td>
-            <td>${applicationNumber}</td>
-            <td>${pan}</td>
-            <td>${bankName}</td>
-            <td>${accountNumber}</td>
-            <td>${annualIncome}</td>
-           <td>${createdDate}</td>
+            <td>${applicationobj.applicationId}</td>
+            <td>${applicationobj.panNumber}</td>
+            <td>${applicationobj.bankName}</td>
+            <td>${applicationobj.accountNumber}</td>
+            <td>${applicationobj.annualIncome}</td>
+           <td>${applicationobj.createDate}</td>
           </tr>
         </table>
 
 <h3>Loan Details</h3>
         <table>
           <tr>
-            <th class="first-col"></th>
             <th>Loan Type</th>
             <th>Loan Amount</th>
             <th>Interest Rate</th>
             <th>Interest Amount</th>
             <th>Total Loan Amount</th>
+            <th>Provider</th>
            <th>Offer Status</th>
 
 
           </tr>
+          <c:forEach var = "loanoffer" items = "${loanOffers}">
           <tr>
-            <td class="first-col"></td>
-            <td>${loanType}</td>
-            <td>${loanAmount}</td>
-            <td>${interestRate}</td>
-            <td>${interestAmount}</td>
-           <td>${totalLoanAmount}</td>
-           <td>${offerStatus}</td>
+            <td>${loanoffer.loanType}</td>
+            <td>${loanoffer.loanAmount}</td>
+            <td>${loanoffer.interestRate}</td>
+            <td>${loanoffer.interestAmount}</td>
+           <td>${loanoffer.loanAmount + loanoffer.interestAmount}</td>
+           <td>${loanoffer.provider}</td>
+           <td>${loanoffer.status}</td>
           </tr>
+          </c:forEach>
         </table>
           <div align = "right"><a href="/loan_application/loanapplicationpage?userId=${customer.userCredentialId}"><input type = "button" value = "Create Application" ${btnFlag} id = "btn"/></a></div>
           <div align = "left"><a href="/loan_application/back"><input type="button" id = "btn" value = "Back" ${btnVal}/></a></div>

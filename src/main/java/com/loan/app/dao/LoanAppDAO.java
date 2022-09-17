@@ -25,7 +25,7 @@ public interface LoanAppDAO {
 
     void saveLoanOffer(LoanOffer loanOffer);
 
-    LoanOffer getLoanOfferByApplicationId(int applicationId);
+    List<LoanOffer> getLoanOfferByApplicationId(int applicationId);
 
     Customer getCustomerInfoByCustomerId(int customerId);
 

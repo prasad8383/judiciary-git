@@ -5,6 +5,16 @@ public class LoanCalculations {
     private int calcInterestAmount;
     private int sacLoanAmount;
 
+    private String provider;
+
+    public String getProvider() {
+        return provider;
+    }
+
+    public void setProvider(String provider) {
+        this.provider = provider;
+    }
+
     public int getIntersetRate() {
         return intersetRate;
     }

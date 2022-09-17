@@ -1,5 +1,6 @@
 package com.loan.app.service.impl;
 
+import com.loan.app.constant.LoanAppConstant;
 import com.loan.app.dao.LoanAppDAO;
 import com.loan.app.entity.Application;
 import com.loan.app.entity.Customer;
@@ -12,6 +13,7 @@ import com.loan.app.vo.LoanOfferVO;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.servlet.ModelAndView;
 import org.json.simple.parser.JSONParser;
 
@@ -42,7 +44,6 @@ public class LoanApplicationServiceImpl implements LoanApplicationService {
         application.setRequestedLoanAmt(applicationRequestVO.getRequestedLoanAmt());
         application.setPanNumber(String.valueOf(applicationRequestVO.getPanNumber()));
         int applicationId = Integer.valueOf(loanAppDAO.saveApplication(application).toString());
-        //todo add not null condition on application id
         application = loanAppDAO.getApplicationByAppId(applicationId);
         applicationRequestVO.setApplicationId(application.getApplicationId());
         return applicationRequestVO;
@@ -98,26 +99,29 @@ public class LoanApplicationServiceImpl implements LoanApplicationService {
     public void generateOffer(int applicationId) {
         Application application = loanAppDAO.getApplicationByAppId(applicationId);
         Long score = checkCustCibilByPan(application.getPanNumber());
+        createLoanOffer(application, score, LoanAppConstant.RELIANCE_PROVIDER);
+        createLoanOffer(application, score, LoanAppConstant.BAJAJ_PROVIDER);
+    }
 
+    private void createLoanOffer(Application application, Long score, String provider) {
         LoanOffer loanOffer = new LoanOffer();
-        loanOffer.setApplicationId(applicationId);
+        loanOffer.setApplicationId(application.getApplicationId());
         loanOffer.setLoanType(application.getProdCode());
         loanOffer.setLoanCreateDate(new Date());
         loanOffer.setTenure(1);
-
-        LoanCalculations loanCalculations = calculateInterestAmount(score, application);
-        if(loanCalculations != null){
-            loanOffer.setLoanAmount(loanCalculations.getSacLoanAmount());
-            loanOffer.setInterestAmount(loanCalculations.getCalcInterestAmount());
-            loanOffer.setInterestRate(loanCalculations.getIntersetRate());
-            loanOffer.setStatus("Offered");
-        }else{
+        LoanCalculations loanCalculations = calculateInterestAmount(score, application, provider);
+        if(loanCalculations == null || score == 0L){
             loanOffer.setLoanAmount(0);
             loanOffer.setInterestAmount(0);
             loanOffer.setInterestRate(0);
             loanOffer.setStatus("Rejected");
+        }else{
+            loanOffer.setLoanAmount(loanCalculations.getSacLoanAmount());
+            loanOffer.setInterestAmount(loanCalculations.getCalcInterestAmount());
+            loanOffer.setInterestRate(loanCalculations.getIntersetRate());
+            loanOffer.setProvider(loanCalculations.getProvider());
+            loanOffer.setStatus("Offered");
         }
-
         loanAppDAO.saveLoanOffer(loanOffer);
     }
 
@@ -125,10 +129,9 @@ public class LoanApplicationServiceImpl implements LoanApplicationService {
     public ApplicationAndOfferVO getApplicationAndOfferData(int applicationId) {
         ApplicationAndOfferVO applicationAndOfferVO = new ApplicationAndOfferVO();
         ApplicationRequestVO applicationRequestVO = new ApplicationRequestVO();
-        LoanOfferVO loanOfferVO = null;
-
+        List<LoanOfferVO> loanOfferVOS = new ArrayList();
         Application application = loanAppDAO.getApplicationByAppId(applicationId);
-        LoanOffer loanOffer = loanAppDAO.getLoanOfferByApplicationId(applicationId);
+        List<LoanOffer> loanOffers = loanAppDAO.getLoanOfferByApplicationId(applicationId);
         Customer customer = loanAppDAO.getCustomerInfoByCustomerId(application.getCustomerId());
 
         //set application values
@@ -140,14 +143,18 @@ public class LoanApplicationServiceImpl implements LoanApplicationService {
         applicationRequestVO.setCreateDate(application.getCreateDate());
 
         //set offers value
-        if(loanOffer != null) {
-            loanOfferVO = new LoanOfferVO();
-            loanOfferVO.setLoanAmount(loanOffer.getLoanAmount());
-            loanOfferVO.setLoanType(loanOffer.getLoanType());
-            loanOfferVO.setTenure(loanOffer.getTenure());
-            loanOfferVO.setInterestAmount(loanOffer.getInterestAmount());
-            loanOfferVO.setInterestRate(loanOffer.getInterestRate());
-            loanOfferVO.setStatus(loanOffer.getStatus());
+        if(!ObjectUtils.isEmpty(loanOffers)) {
+            for(LoanOffer loanOffer: loanOffers) {
+                LoanOfferVO loanOfferVO = new LoanOfferVO();
+                loanOfferVO.setLoanAmount(loanOffer.getLoanAmount());
+                loanOfferVO.setLoanType(loanOffer.getLoanType());
+                loanOfferVO.setTenure(loanOffer.getTenure());
+                loanOfferVO.setInterestAmount(loanOffer.getInterestAmount());
+                loanOfferVO.setInterestRate(loanOffer.getInterestRate());
+                loanOfferVO.setStatus(loanOffer.getStatus());
+                loanOfferVO.setProvider(loanOffer.getProvider());
+                loanOfferVOS.add(loanOfferVO);
+            }
         }
         //set customer value
         applicationAndOfferVO.setFirstName(customer.getFname());
@@ -158,7 +165,7 @@ public class LoanApplicationServiceImpl implements LoanApplicationService {
         applicationAndOfferVO.setMobileNumber(customer.getContactNumber());
 
         applicationAndOfferVO.setApplicationRequestVO(applicationRequestVO);
-        applicationAndOfferVO.setLoanOfferVO(loanOfferVO);
+        applicationAndOfferVO.setLoanOfferVOS(loanOfferVOS);
         return applicationAndOfferVO;
     }
 
@@ -166,35 +173,18 @@ public class LoanApplicationServiceImpl implements LoanApplicationService {
     public ModelAndView getApplicationAndOfferDetails(ApplicationAndOfferVO applicationAndOfferVO) {
         ModelAndView modelAndView = new ModelAndView("offer");
         if(applicationAndOfferVO != null) {
-            modelAndView.addObject("firstName", applicationAndOfferVO.getFirstName());
-            modelAndView.addObject("customerId", applicationAndOfferVO.getCustomerId());
-            modelAndView.addObject("middleName", applicationAndOfferVO.getMiddleName());
-            modelAndView.addObject("email", applicationAndOfferVO.getEmail());
-            modelAndView.addObject("lastName", applicationAndOfferVO.getLastName());
-            modelAndView.addObject("mobileNumber", applicationAndOfferVO.getMobileNumber());
+            modelAndView.addObject("customerobj", applicationAndOfferVO);
             modelAndView.addObject("btnFlag", "hidden");
             modelAndView.addObject("btnVal", "hidden");
         }
         if(applicationAndOfferVO.getApplicationRequestVO() != null) {
             ApplicationRequestVO applicationRequestVO = applicationAndOfferVO.getApplicationRequestVO();
-            modelAndView.addObject("pan", applicationRequestVO.getPanNumber());
-            modelAndView.addObject("applicationNumber", applicationRequestVO.getApplicationId());
-            modelAndView.addObject("bankName", applicationRequestVO.getBankName());
-            modelAndView.addObject("accountNumber", applicationRequestVO.getAccountNumber());
-            modelAndView.addObject("annualIncome", applicationRequestVO.getAnnualIncome());
-            modelAndView.addObject("createdDate", applicationRequestVO.getCreateDate());
+            modelAndView.addObject("applicationobj", applicationRequestVO);
             modelAndView.addObject("btnG", "");
         }
-        if (applicationAndOfferVO.getLoanOfferVO() != null) {
-            LoanOfferVO loanOfferVO = applicationAndOfferVO.getLoanOfferVO();
-            modelAndView.addObject("loanType", loanOfferVO.getLoanType());
-            modelAndView.addObject("loanAmount", loanOfferVO.getLoanAmount());
-            modelAndView.addObject("interestRate", loanOfferVO.getInterestRate());
-            modelAndView.addObject("interestAmount", loanOfferVO.getInterestAmount());
-            modelAndView.addObject("tenure", loanOfferVO.getTenure());
-            modelAndView.addObject("totalLoanAmount", (loanOfferVO.getInterestAmount() + loanOfferVO.getLoanAmount()));
-            modelAndView.addObject("offerStatus", loanOfferVO.getStatus());
-            modelAndView.addObject("loanCreatedDate", loanOfferVO.getLoanCreateDate());
+        if (!ObjectUtils.isEmpty(applicationAndOfferVO.getLoanOfferVOS())) {
+            List<LoanOfferVO> loanOffers = applicationAndOfferVO.getLoanOfferVOS();
+            modelAndView.addObject("loanOffers", loanOffers);
             modelAndView.addObject("btnG", "hidden");
         }
         return modelAndView;
@@ -234,28 +224,45 @@ public class LoanApplicationServiceImpl implements LoanApplicationService {
         return modelAndView;
     }
 
-    private LoanCalculations calculateInterestAmount(Long score, Application application) {
+    private LoanCalculations calculateInterestAmount(Long score, Application application, String provider) {
         int requestedLoanAmt = application.getRequestedLoanAmt();
         int annualIncome = application.getAnnualIncome();
         int loanAmount;
         LoanCalculations loanCalculations = new LoanCalculations();
         if(requestedLoanAmt < (2 * annualIncome)) {
-            if (score > 750) {
-                loanAmount = requestedLoanAmt;
-                loanCalculations.setIntersetRate(8);
-            } else if(score > 700) {
-                loanAmount = requestedLoanAmt * 90 / 100;
-                loanCalculations.setIntersetRate(12);
-            }else if(score > 650){
-                loanAmount = requestedLoanAmt * 80 / 100;
-                loanCalculations.setIntersetRate(15);
+            if(provider.equalsIgnoreCase(LoanAppConstant.RELIANCE_PROVIDER)) {
+                if (score > 750) {
+                    loanAmount = requestedLoanAmt;
+                    loanCalculations.setIntersetRate(8);
+                } else if (score > 700) {
+                    loanAmount = requestedLoanAmt * 90 / 100;
+                    loanCalculations.setIntersetRate(12);
+                } else if (score > 650) {
+                    loanAmount = requestedLoanAmt * 80 / 100;
+                    loanCalculations.setIntersetRate(15);
+                } else {
+                    loanAmount = requestedLoanAmt * 70 / 100;
+                    loanCalculations.setIntersetRate(18);
+                }
             }else{
-                loanAmount = requestedLoanAmt * 70 / 100;
-                loanCalculations.setIntersetRate(18);
+                if (score > 700) {
+                    loanAmount = requestedLoanAmt;
+                    loanCalculations.setIntersetRate(10);
+                } else if (score > 650) {
+                    loanAmount = requestedLoanAmt * 90 / 100;
+                    loanCalculations.setIntersetRate(15);
+                } else if (score > 600) {
+                    loanAmount = requestedLoanAmt * 80 / 100;
+                    loanCalculations.setIntersetRate(18);
+                } else {
+                    loanAmount = requestedLoanAmt * 70 / 100;
+                    loanCalculations.setIntersetRate(20);
+                }
             }
             loanCalculations.setSacLoanAmount(loanAmount);
-            loanAmount = loanAmount * loanCalculations.getIntersetRate() /100;
+            loanAmount = loanAmount * loanCalculations.getIntersetRate() / 100;
             loanCalculations.setCalcInterestAmount(loanAmount);
+            loanCalculations.setProvider(provider);
             return loanCalculations;
         }
         return null;
@@ -284,7 +291,7 @@ public class LoanApplicationServiceImpl implements LoanApplicationService {
                 return (Long)data_obj.get("score");
             }
         }catch (Exception e){
-            return 400L;
+            return 0L;
         }
     }
     @Override
