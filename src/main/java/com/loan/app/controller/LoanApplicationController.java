@@ -24,6 +24,7 @@ public class LoanApplicationController {
 
     @Autowired
     private LoginService loginService;
+
     @GetMapping("/loanapplicationpage")
     public ModelAndView createApplication(@RequestParam int userId) {
         Customer customer = loginService.getCustomerByUserId(userId);
@@ -33,26 +34,27 @@ public class LoanApplicationController {
     }
 
     @PostMapping(value = "/create")
-    public ModelAndView createLoanApplication(@RequestParam HashMap applicationFormValue){
-       try {
-           ApplicationRequestVO applicationRes =  loanApplicationService.createLoanApplication(applicationFormValue);
-           ApplicationAndOfferVO applicationAndOfferVO = loanApplicationService.getApplicationAndOfferData(applicationRes.getApplicationId());
-           ModelAndView modelAndView = loanApplicationService.getApplicationAndOfferDetails(applicationAndOfferVO);
-           modelAndView.addObject("btnG", "");
-           return modelAndView;
-       }catch(Exception e){
-           throw e;
-       }
+    public ModelAndView createLoanApplication(@RequestParam HashMap applicationFormValue) {
+        try {
+            ApplicationRequestVO applicationRes = loanApplicationService.createLoanApplication(applicationFormValue);
+            ApplicationAndOfferVO applicationAndOfferVO = loanApplicationService.getApplicationAndOfferData(applicationRes.getApplicationId());
+            ModelAndView modelAndView = loanApplicationService.getApplicationAndOfferDetails(applicationAndOfferVO);
+            modelAndView.addObject("btnG", "");
+            return modelAndView;
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     @PostMapping(value = "/view")
-    public ApplicationRequestVO viewLoanApplication(@RequestBody String applicationId){
+    public ApplicationRequestVO viewLoanApplication(@RequestBody String applicationId) {
         try {
             return loanApplicationService.viewLoanApplication(applicationId);
-        }catch(Exception e){
+        } catch (Exception e) {
             return null;
         }
     }
+
     @GetMapping(value = "/back")
     public ModelAndView adminPage() {
         ModelAndView modelAndView = new ModelAndView("admin");

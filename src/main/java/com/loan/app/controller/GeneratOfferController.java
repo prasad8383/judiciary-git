@@ -14,11 +14,12 @@ public class GeneratOfferController {
     private LoanApplicationService loanApplicationService;
 
     @GetMapping("/generateOffer")
-    public void generateOffer(@RequestParam int applicationId){
+    public void generateOffer(@RequestParam int applicationId) {
         loanApplicationService.generateOffer(applicationId);
     }
+
     @GetMapping("/viewOffer")
-    public ModelAndView viewOffer(@RequestParam int applicationId){
+    public ModelAndView viewOffer(@RequestParam int applicationId) {
         ApplicationAndOfferVO applicationAndOfferVO = loanApplicationService.getApplicationAndOfferData(applicationId);
         ModelAndView modelAndView = loanApplicationService.getApplicationAndOfferDetails(applicationAndOfferVO);
         modelAndView.addObject("btnVal", "");

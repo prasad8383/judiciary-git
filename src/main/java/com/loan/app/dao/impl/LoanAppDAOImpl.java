@@ -21,12 +21,13 @@ public class LoanAppDAOImpl implements LoanAppDAO {
     private static Logger logger = LoggerFactory.getLogger(LoanAppDAOImpl.class);
     @Autowired
     HibernateUtils hibernateUtils;
+
     @Override
     public UserCredential checkUserExistOrNot(String userId, String userPassword) {
         UserCredential userCredential = null;
-        try{
+        try {
             userCredential = getUserCredentialByUserId(userId, userPassword);
-        }catch (Exception e){
+        } catch (Exception e) {
             logger.error("LoanAppDAOImpl::checkUserExistOrNot() failed while fetching data from DB: {}", e);
         }
         return userCredential;
@@ -56,27 +57,27 @@ public class LoanAppDAOImpl implements LoanAppDAO {
 
     @Override
     public void saveUserCredential(UserCredential userCredential) {
-        try(Session session = hibernateUtils.getSession()){
+        try (Session session = hibernateUtils.getSession()) {
             session.saveOrUpdate(userCredential);
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new HibernateException("Server might be down. Please try again later.");
         }
     }
 
     @Override
     public void saveCustomer(Customer customer) {
-        try(Session session = hibernateUtils.getSession()){
+        try (Session session = hibernateUtils.getSession()) {
             session.saveOrUpdate(customer);
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new HibernateException("Server might be down. Please try again later.");
         }
     }
 
     @Override
     public String saveApplication(Application application) {
-        try(Session session = hibernateUtils.getSession()){
+        try (Session session = hibernateUtils.getSession()) {
             return session.save(application).toString();
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new HibernateException("Server might be down. Please try again later.");
         }
     }
@@ -97,9 +98,9 @@ public class LoanAppDAOImpl implements LoanAppDAO {
 
     @Override
     public void saveLoanOffer(LoanOffer loanOffer) {
-        try(Session session = hibernateUtils.getSession()){
+        try (Session session = hibernateUtils.getSession()) {
             session.save(loanOffer);
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new HibernateException("Server might be down. Please try again later.");
         }
     }
@@ -110,7 +111,7 @@ public class LoanAppDAOImpl implements LoanAppDAO {
         Session session = hibernateUtils.getSession();
         Query query = session.createQuery(hql);
         query.setParameter("applicationId", applicationId);
-        return (List<LoanOffer>) (!query.getResultList().isEmpty() ?query.getResultList():null);
+        return (List<LoanOffer>) (!query.getResultList().isEmpty() ? query.getResultList() : null);
     }
 
     @Override
@@ -134,7 +135,7 @@ public class LoanAppDAOImpl implements LoanAppDAO {
         Session session = hibernateUtils.getSession();
         Query query = session.createQuery(hql);
         query.setParameter("customerId", customerId);
-        return (Application)(!query.getResultList().isEmpty() ?query.getResultList().get(0):null);
+        return (Application) (!query.getResultList().isEmpty() ? query.getResultList().get(0) : null);
     }
 
 }

@@ -139,7 +139,7 @@
   <body>
   <div align = "right"><a href="/loan_application/home"><button>Logout</button></a></div>
   <div><marquee width="60%" direction="left" height="50px">
-       <b>CDAC LOAN BANK</b> (Taking Banking Technology to Common Man, Your Tech-friendly bank)   <font color = "red">*For more information call on us: 9604889377</font>
+       <b>CDAC LOAN BANK</b> (Taking Banking Technology to Common Man, Your Tech-friendly bank) <font color = "red">*For more information call on us: 8308341837</font>
        </marquee></div>
     <div class="testbox">
       <form action="/">
@@ -155,14 +155,14 @@
             <th>View</th>
           </tr>
           <c:forEach var = "app" items = "${application}">
-                  <tr>
-                  <td>${app.applicationId}</td>
-                  <td>${app.customerId}</td>
-                  <td>${app.customerName}</td>
-                  <td>${app.panNumber}</td>
-                  <td><input type = "button" value = "Generate" onclick = "generateOffer(${app.applicationId})" id = "${app.applicationId}" ${app.generateOffer} /></td>
-                  <td><a href="/loan_application/viewOffer?applicationId=${app.applicationId}"><input type = "button" value = "View Offers" class = "btn"/></a></td>
-                  </tr>
+          <tr>
+            <td>${app.applicationId}</td>
+            <td>${app.customerId}</td>
+            <td>${app.customerName}</td>
+            <td>${app.panNumber}</td>
+            <td><input type = "button" value = "Generate" onclick = "generateOffer(${app.applicationId})" id = "${app.applicationId}" ${app.generateOffer} /></td>
+            <td><a href="/loan_application/viewOffer?applicationId=${app.applicationId}"><input type = "button" value = "View Offers" class = "btn"/></a></td>
+          </tr>
           </c:forEach>
         </table>
       </form>

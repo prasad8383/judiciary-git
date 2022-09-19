@@ -283,7 +283,7 @@ h3 {
 
     <!-- Login Form -->
     <form action="/loan_application/login" method="post" name="UserCredentialVO">
-      <input type="text" id="login" class="fadeIn second" name="userId" placeholder="login">
+      <input type="text" id="login" class="fadeIn second" name="userId" placeholder="useremail">
       <input type="text" id="password" class="fadeIn third" name="userPassword" placeholder="password">
       <input type="submit" class="fadeIn fourth" value="Log In">
       <h4>${result}</h4>

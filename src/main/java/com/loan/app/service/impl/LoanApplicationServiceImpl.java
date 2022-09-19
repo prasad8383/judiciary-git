@@ -54,11 +54,11 @@ public class LoanApplicationServiceImpl implements LoanApplicationService {
 
         applicationRequestVO.setAccountNumber(Integer.valueOf((String) applicationFormValue.get("accNo")));
         applicationRequestVO.setBankName((String) applicationFormValue.get("bankName"));
-        applicationRequestVO.setCustomerId(Integer.valueOf((String)applicationFormValue.get("customerId")));
-        applicationRequestVO.setAnnualIncome(Integer.valueOf((String)applicationFormValue.get("annualIncome")));
-        applicationRequestVO.setRequestedLoanAmt(Integer.valueOf((String)applicationFormValue.get("requestedLoanAmt")));
-        applicationRequestVO.setPanNumber((String)applicationFormValue.get("panNo"));
-        applicationRequestVO.setCustomerId(Integer.valueOf((String)applicationFormValue.get("customerId")));
+        applicationRequestVO.setCustomerId(Integer.valueOf((String) applicationFormValue.get("customerId")));
+        applicationRequestVO.setAnnualIncome(Integer.valueOf((String) applicationFormValue.get("annualIncome")));
+        applicationRequestVO.setRequestedLoanAmt(Integer.valueOf((String) applicationFormValue.get("requestedLoanAmt")));
+        applicationRequestVO.setPanNumber((String) applicationFormValue.get("panNo"));
+        applicationRequestVO.setCustomerId(Integer.valueOf((String) applicationFormValue.get("customerId")));
         applicationRequestVO.setUpdateDate(new Date());
         applicationRequestVO.setCreateDate(new Date());
         return applicationRequestVO;
@@ -110,12 +110,12 @@ public class LoanApplicationServiceImpl implements LoanApplicationService {
         loanOffer.setLoanCreateDate(new Date());
         loanOffer.setTenure(1);
         LoanCalculations loanCalculations = calculateInterestAmount(score, application, provider);
-        if(loanCalculations == null || score == 0L){
+        if (loanCalculations == null || score == 0L) {
             loanOffer.setLoanAmount(0);
             loanOffer.setInterestAmount(0);
             loanOffer.setInterestRate(0);
             loanOffer.setStatus("Rejected");
-        }else{
+        } else {
             loanOffer.setLoanAmount(loanCalculations.getSacLoanAmount());
             loanOffer.setInterestAmount(loanCalculations.getCalcInterestAmount());
             loanOffer.setInterestRate(loanCalculations.getIntersetRate());
@@ -143,8 +143,8 @@ public class LoanApplicationServiceImpl implements LoanApplicationService {
         applicationRequestVO.setCreateDate(application.getCreateDate());
 
         //set offers value
-        if(!ObjectUtils.isEmpty(loanOffers)) {
-            for(LoanOffer loanOffer: loanOffers) {
+        if (!ObjectUtils.isEmpty(loanOffers)) {
+            for (LoanOffer loanOffer : loanOffers) {
                 LoanOfferVO loanOfferVO = new LoanOfferVO();
                 loanOfferVO.setLoanAmount(loanOffer.getLoanAmount());
                 loanOfferVO.setLoanType(loanOffer.getLoanType());
@@ -172,12 +172,12 @@ public class LoanApplicationServiceImpl implements LoanApplicationService {
     @Override
     public ModelAndView getApplicationAndOfferDetails(ApplicationAndOfferVO applicationAndOfferVO) {
         ModelAndView modelAndView = new ModelAndView("offer");
-        if(applicationAndOfferVO != null) {
+        if (applicationAndOfferVO != null) {
             modelAndView.addObject("customerobj", applicationAndOfferVO);
             modelAndView.addObject("btnFlag", "hidden");
             modelAndView.addObject("btnVal", "hidden");
         }
-        if(applicationAndOfferVO.getApplicationRequestVO() != null) {
+        if (applicationAndOfferVO.getApplicationRequestVO() != null) {
             ApplicationRequestVO applicationRequestVO = applicationAndOfferVO.getApplicationRequestVO();
             modelAndView.addObject("applicationobj", applicationRequestVO);
             modelAndView.addObject("btnG", "");
@@ -229,8 +229,8 @@ public class LoanApplicationServiceImpl implements LoanApplicationService {
         int annualIncome = application.getAnnualIncome();
         int loanAmount;
         LoanCalculations loanCalculations = new LoanCalculations();
-        if(requestedLoanAmt < (2 * annualIncome)) {
-            if(provider.equalsIgnoreCase(LoanAppConstant.RELIANCE_PROVIDER)) {
+        if (requestedLoanAmt < (2 * annualIncome)) {
+            if (provider.equalsIgnoreCase(LoanAppConstant.RELIANCE_PROVIDER)) {
                 if (score > 750) {
                     loanAmount = requestedLoanAmt;
                     loanCalculations.setIntersetRate(8);
@@ -244,7 +244,7 @@ public class LoanApplicationServiceImpl implements LoanApplicationService {
                     loanAmount = requestedLoanAmt * 70 / 100;
                     loanCalculations.setIntersetRate(18);
                 }
-            }else{
+            } else {
                 if (score > 700) {
                     loanAmount = requestedLoanAmt;
                     loanCalculations.setIntersetRate(10);
@@ -269,8 +269,8 @@ public class LoanApplicationServiceImpl implements LoanApplicationService {
     }
 
     private Long checkCustCibilByPan(String panNumber) {
-        try{
-            URL url = new URL("http://localhost:3000/cibildetails_"+panNumber);
+        try {
+            URL url = new URL("http://localhost:3000/cibildetails_" + panNumber);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.connect();
@@ -288,27 +288,29 @@ public class LoanApplicationServiceImpl implements LoanApplicationService {
                 scanner.close();
                 JSONParser parse = new JSONParser();
                 JSONObject data_obj = (JSONObject) parse.parse(inline);
-                return (Long)data_obj.get("score");
+                return (Long) data_obj.get("score");
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             return 0L;
         }
     }
+
     @Override
     public List<ApplicationRequestVO> getApplicationData() {
         List<ApplicationRequestVO> applicationRequestVOS = new ArrayList<>();
-        List<Application> applications =  loanAppDAO.getApplications();;
+        List<Application> applications = loanAppDAO.getApplications();
+        ;
 
-        for(Application application:applications){
+        for (Application application : applications) {
             Customer customer = loanAppDAO.getCustomerInfoByCustomerId(application.getCustomerId());
             ApplicationRequestVO applicationRequestVO = new ApplicationRequestVO();
             applicationRequestVO.setGenerateOffer("");
-            if(loanAppDAO.getLoanOfferByApplicationId(application.getApplicationId()) != null){
+            if (loanAppDAO.getLoanOfferByApplicationId(application.getApplicationId()) != null) {
                 applicationRequestVO.setGenerateOffer("disabled");
             }
             applicationRequestVO.setApplicationId(application.getApplicationId());
             applicationRequestVO.setCustomerId(application.getCustomerId());
-            applicationRequestVO.setCustomerName(customer.getFname()+" "+customer.getLanme());
+            applicationRequestVO.setCustomerName(customer.getFname() + " " + customer.getLanme());
             applicationRequestVO.setPanNumber(application.getPanNumber());
             applicationRequestVOS.add(applicationRequestVO);
         }

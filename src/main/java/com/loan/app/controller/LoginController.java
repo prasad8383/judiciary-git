@@ -25,33 +25,33 @@ public class LoginController {
     private LoanApplicationService loanApplicationService;
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
-    public ModelAndView home(){
+    public ModelAndView home() {
         return new ModelAndView("index");
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public ModelAndView checkUser(@RequestParam HashMap<String, String> loginValues){
+    public ModelAndView checkUser(@RequestParam HashMap<String, String> loginValues) {
         UserCredentialRequestVO userCredential = loginService.checkLogin(loginValues);
         return viewAccordingToUserRole(userCredential);
     }
 
     @GetMapping(value = "/reg")
-    public ModelAndView regpage(){
+    public ModelAndView regpage() {
         ModelAndView modelAndView = new ModelAndView("reg");
         return modelAndView;
     }
 
     @PostMapping(value = "/adduser")
-    public ModelAndView addUser(@RequestParam HashMap<String, String> userRegData){
+    public ModelAndView addUser(@RequestParam HashMap<String, String> userRegData) {
         ModelAndView modelAndView = new ModelAndView("index");
         try {
             loginService.registerUser(userRegData);
-        }catch(Exception e){
+        } catch (Exception e) {
             //todo add logger
-            modelAndView.addObject("result","something went wrong try again");
+            modelAndView.addObject("result", "something went wrong try again");
             return modelAndView;
         }
-        modelAndView.addObject("result","Registered successfully please login with your credentials");
+        modelAndView.addObject("result", "Registered successfully please login with your credentials");
         return modelAndView;
     }
 
@@ -65,10 +65,10 @@ public class LoginController {
             } else if (LoanAppConstant.USER_ROLE_CUSTOMER.equalsIgnoreCase(userCredential.getUserRole())) {
                 Customer customer = loginService.getCustomerByUserId(userCredential.getId());
                 Application application = loanApplicationService.getApplicationByCustomerId(customer.getCustomerId());
-                if(application != null) {
+                if (application != null) {
                     ApplicationAndOfferVO applicationAndOfferVO = loanApplicationService.getApplicationAndOfferData(application.getApplicationId());
                     modelAndView = loanApplicationService.getApplicationAndOfferDetails(applicationAndOfferVO);
-                }else {
+                } else {
                     //if no application is created then fetch customer data only
                     modelAndView = loanApplicationService.getCustomerInfo(customer);
                 }

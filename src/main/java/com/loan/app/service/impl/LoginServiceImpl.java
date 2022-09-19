@@ -15,6 +15,7 @@ import org.springframework.util.ObjectUtils;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
 @Service
 public class LoginServiceImpl implements LoginService {
     @Autowired
@@ -48,7 +49,7 @@ public class LoginServiceImpl implements LoginService {
         userCredentialRequestVO.setUserId(userRegData.get("email"));
         userCredentialRequestVO.setUserRole("customer");
 
-        if(!ObjectUtils.isEmpty(userRegistrationRequstVO) && !ObjectUtils.isEmpty(userCredentialRequestVO)){
+        if (!ObjectUtils.isEmpty(userRegistrationRequstVO) && !ObjectUtils.isEmpty(userCredentialRequestVO)) {
             List<Object> entities = new ArrayList<>();
 
             UserCredential userCredential = new UserCredential();
